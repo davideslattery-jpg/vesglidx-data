@@ -1,0 +1,35 @@
+name: VESGLIDX daily update
+
+# Runs the tracker on GitHub's servers — no personal computer required.
+on:
+  schedule:
+    # 22:00 UTC = ~6:00pm US Eastern (after the 4:00pm market close),
+    # Monday–Friday. Cron is always UTC and does not shift for daylight saving,
+    # but 22:00 UTC lands after the close year-round (6pm EDT / 5pm EST).
+    - cron: '0 22 * * 1-5'
+  workflow_dispatch:   # also lets you run it on demand from the Actions tab
+
+permissions:
+  contents: write      # allows the run to publish the updated JSON back to the repo
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out the repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Install dependencies
+        run: pip install yfinance pandas numpy requests
+
+      - name: Run the VESGLIDX tracker
+        env:
+          # The tracker reads GITHUB_TOKEN to publish results. This is GitHub's
+          # automatic per-run token — no personal access token needed here.
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: python vesglidx_daily_tracker.py
