@@ -472,14 +472,16 @@ def main():
 
     # ── Latest snapshot (for website) ──
     total_return = (index_value / BASE_VALUE - 1) * 100
-    year = today.year
-    yr_entries = [d for d in history['daily'] if d['date'].startswith(str(year))]
-    if len(yr_entries) >= 2:
-        ytd_return = (yr_entries[-1]['index_value'] / yr_entries[0]['index_value'] - 1) * 100
-    elif len(yr_entries) == 1:
-        ytd_return = 0.0
+    # YTD: measure from the prior year-end close. If the index launched this
+    # year (no prior-year data), measure from the inception base value, so YTD
+    # equals since-inception in the launch year rather than defaulting to 0.
+    year = int(stamp[:4])
+    prior_year = [d for d in history['daily'] if int(d['date'][:4]) < year]
+    if prior_year:
+        ytd_base = max(prior_year, key=lambda d: d['date'])['index_value']
     else:
-        ytd_return = None
+        ytd_base = BASE_VALUE
+    ytd_return = (index_value / ytd_base - 1) * 100
 
     latest = {
         'index_name': 'Verde ESG Leaders Index',
