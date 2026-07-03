@@ -3,12 +3,12 @@
   "ticker": "VESGLIDX",
   "as_of_date": "2026-07-02",
   "index_value": 1008.24,
-  "daily_change_pct": 0.587,
-  "ytd_return_pct": 0.0,
+  "daily_change_pct": -0.0,
+  "ytd_return_pct": 0.82,
   "since_inception_return_pct": 0.82,
   "base_value": 1000.0,
   "inception_date": "2026-07-01",
   "constituent_count": 97,
   "last_rebalance_date": "2026-07-02",
-  "updated_at": "2026-07-03T18:57:23.183001"
+  "updated_at": "2026-07-03T18:59:53.494192"
 }
