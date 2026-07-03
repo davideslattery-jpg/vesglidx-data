@@ -429,6 +429,16 @@ def main():
         print(f"\nINCEPTION DAY — index set to {BASE_VALUE:,.2f} "
               f"on all {len(shares)} constituents")
     else:
+        # De-duplicate FIRST: drop any existing record carrying today's stamp
+        # BEFORE selecting the comparison record. Otherwise a re-run of the
+        # same market day (or a run on a market holiday, when the freshest
+        # data is still the prior session) compares the entry against itself,
+        # gets a ~0% return, and overwrites the true stored daily return.
+        history['daily'] = [d for d in history['daily'] if d['date'] != stamp]
+        if not history['daily']:
+            print("ERROR: no prior trading-day record to compare against "
+                  "after de-duplication. Nothing written.")
+            return
         prev = history['daily'][-1]
         prev_value  = prev['index_value']
         prev_prices = prev.get('prices', {})
