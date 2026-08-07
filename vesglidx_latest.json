@@ -1,14 +1,14 @@
 {
   "index_name": "Verde ESG Leaders Index",
   "ticker": "VESGLIDX",
-  "as_of_date": "2026-08-06",
-  "index_value": 1049.49,
-  "daily_change_pct": -0.033,
-  "ytd_return_pct": 4.95,
-  "since_inception_return_pct": 4.95,
+  "as_of_date": "2026-08-07",
+  "index_value": 1055.27,
+  "daily_change_pct": 0.55,
+  "ytd_return_pct": 5.53,
+  "since_inception_return_pct": 5.53,
   "base_value": 1000.0,
   "inception_date": "2026-07-01",
   "constituent_count": 97,
   "last_rebalance_date": "2026-07-01",
-  "updated_at": "2026-08-07T01:29:01.416731"
+  "updated_at": "2026-08-07T22:28:59.595739"
 }
