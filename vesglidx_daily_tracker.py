@@ -353,14 +353,21 @@ def fetch_prices(tickers, target_date=None):
     return prices, latest, missing
 
 
-def is_rebalancing_day(today, history):
-    """First trading day of a rebalancing month (history already exists)."""
+def is_rebalancing_day(market_date, history, last_rebal_date=None):
+    """First trading day of a rebalancing month, judged by the MARKET-DATA date.
+
+    FIX (Sep 2026): this used the run date. GitHub Actions cron runs can start
+    after midnight UTC, so a run dated Sep 1 processing the Aug 31 close
+    triggered a spurious 'rebalance' stamped Aug 31. We now test the market
+    date, and never rebalance twice in the same month."""
     if not history.get('daily'):
         return False  # inception handled separately
-    if today.month not in REBAL_MONTHS:
+    if market_date.month not in REBAL_MONTHS:
         return False
+    if last_rebal_date and last_rebal_date[:7] == market_date.strftime('%Y-%m'):
+        return False  # already rebalanced this month
     last_date = datetime.strptime(history['daily'][-1]['date'], '%Y-%m-%d').date()
-    return last_date.month != today.month
+    return last_date.month != market_date.month
 
 
 def compute_shares(target_weights, prices, index_value):
@@ -386,6 +393,16 @@ def main():
     }})
     weights_data = load_json(WEIGHTS_FILE, {})
     inception = not history['daily']
+
+    # SAFETY GUARD (Sep 2026): the index is live. If the history file is
+    # missing (wrong folder, fresh Colab, failed checkout), NEVER strike a new
+    # inception — that would overwrite the published index with 1,000.00.
+    if inception and today > datetime.strptime(INCEPTION_DATE, '%Y-%m-%d').date():
+        print(f"ERROR: no {HISTORY_FILE} found in {os.getcwd()}, but the index "
+              f"has been live since {INCEPTION_DATE}. Refusing to start a new "
+              "index. Run from the folder/repo that holds the live JSON files. "
+              "Nothing written, nothing pushed.")
+        return
 
     print(f"Fetching prices for {len(TICKERS)} constituents...")
     # At inception, pin to the published inception date so a next-day run still
@@ -447,10 +464,31 @@ def main():
             if t not in prices and t in prev_prices:
                 prices[t] = prev_prices[t]
 
-        rebalanced = is_rebalancing_day(today, weights_data and history or history)
-        if rebalanced:
+        # Stale-data guard: never write a record dated before the last one.
+        if stamp < prev['date']:
+            print(f"ERROR: market data dated {stamp} is older than last record "
+                  f"{prev['date']}. Nothing written.")
+            return
+
+        # Value today's close with the shares held going INTO today.
+        old_shares = weights_data.get('shares', {})
+        index_value = sum(old_shares[t] * prices[t] for t in old_shares if t in prices)
+
+        market_date = datetime.strptime(stamp, '%Y-%m-%d').date()
+        # A re-run of the rebalance day itself: shares were already reset at
+        # this close, so keep them and keep the record flagged.
+        if weights_data.get('rebal_date') == stamp:
+            print("Re-run of rebalance day — keeping existing post-rebalance shares")
+            weights_data['_rerun'] = True
+        rebalanced = weights_data.pop('_rerun', False) or is_rebalancing_day(
+            market_date, history, weights_data.get('rebal_date'))
+        if rebalanced and weights_data.get('rebal_date') != stamp:
+            # FIX (Sep 2026): shares were previously reset at today's prices
+            # using YESTERDAY's index value, which erased the rebalance day's
+            # return. Rebalance at the close: reset shares to target weights at
+            # today's prices so that they are worth today's index value.
             print("\n>>> QUARTERLY REBALANCE <<<")
-            shares = compute_shares(TARGET_WEIGHT, prices, prev_value)  # continuity
+            shares = compute_shares(TARGET_WEIGHT, prices, index_value)
             weights_data = {
                 'shares': shares,
                 'rebal_date': stamp,
@@ -459,10 +497,6 @@ def main():
             }
             save_json(WEIGHTS_FILE, weights_data)
             print(f"Shares reset to target weights for {len(shares)} constituents")
-        else:
-            shares = weights_data.get('shares', {})
-
-        index_value = sum(shares[t] * prices[t] for t in shares if t in prices)
         daily_return = index_value / prev_value - 1
         print(f"\nDaily return: {daily_return*100:+.3f}%")
         print(f"Index value: {prev_value:,.2f} -> {index_value:,.2f}")

@@ -4412,8 +4412,8 @@
     },
     {
       "date": "2026-08-31",
-      "index_value": 1071.2733,
-      "daily_return_pct": 0.0,
+      "index_value": 1064.254,
+      "daily_return_pct": -0.6552,
       "prices": {
         "META": 572.3400268554688,
         "V": 379.3699951171875,
@@ -4513,12 +4513,12 @@
         "FRT": 116.02999877929688,
         "PTC": 155.74000549316406
       },
-      "rebalanced": true
+      "rebalanced": false
     },
     {
       "date": "2026-09-01",
-      "index_value": 1071.2733,
-      "daily_return_pct": 0.0,
+      "index_value": 1055.9658,
+      "daily_return_pct": -0.7788,
       "prices": {
         "META": 578.5399780273438,
         "V": 372.6700134277344,
@@ -4622,7 +4622,7 @@
     },
     {
       "date": "2026-09-02",
-      "index_value": 1080.9317,
+      "index_value": 1065.4862,
       "daily_return_pct": 0.9016,
       "prices": {
         "META": 592.8499755859375,
@@ -4727,7 +4727,7 @@
     },
     {
       "date": "2026-09-03",
-      "index_value": 1091.0043,
+      "index_value": 1075.4149,
       "daily_return_pct": 0.9318,
       "prices": {
         "META": 610.6799926757812,
@@ -4832,7 +4832,7 @@
     },
     {
       "date": "2026-09-04",
-      "index_value": 1084.5283,
+      "index_value": 1069.0314,
       "daily_return_pct": -0.5936,
       "prices": {
         "META": 616.77001953125,
@@ -4937,8 +4937,8 @@
     },
     {
       "date": "2026-09-08",
-      "index_value": 1071.4158,
-      "daily_return_pct": -1.2091,
+      "index_value": 1056.1063,
+      "daily_return_pct": -1.209,
       "prices": {
         "META": 613.47998046875,
         "V": 368.6400146484375,
@@ -5042,7 +5042,7 @@
     },
     {
       "date": "2026-09-09",
-      "index_value": 1069.8937,
+      "index_value": 1054.6059,
       "daily_return_pct": -0.1421,
       "prices": {
         "META": 653.6900024414062,
@@ -5147,7 +5147,7 @@
     },
     {
       "date": "2026-09-10",
-      "index_value": 1064.1965,
+      "index_value": 1048.9901,
       "daily_return_pct": -0.5325,
       "prices": {
         "META": 644.3800048828125,
@@ -5252,7 +5252,7 @@
     },
     {
       "date": "2026-09-11",
-      "index_value": 1071.1934,
+      "index_value": 1055.8871,
       "daily_return_pct": 0.6575,
       "prices": {
         "META": 648.030029296875,
@@ -5357,7 +5357,7 @@
     },
     {
       "date": "2026-09-15",
-      "index_value": 1074.9106,
+      "index_value": 1059.5511,
       "daily_return_pct": 0.347,
       "prices": {
         "META": 670.239990234375,
@@ -5462,7 +5462,7 @@
     },
     {
       "date": "2026-09-17",
-      "index_value": 1073.2011,
+      "index_value": 1057.8661,
       "daily_return_pct": -0.159,
       "prices": {
         "META": 682.3099975585938,
@@ -5567,7 +5567,7 @@
     },
     {
       "date": "2026-09-18",
-      "index_value": 1065.6718,
+      "index_value": 1050.4444,
       "daily_return_pct": -0.7016,
       "prices": {
         "META": 665.75,
@@ -5672,7 +5672,7 @@
     },
     {
       "date": "2026-09-22",
-      "index_value": 1082.782,
+      "index_value": 1067.3101,
       "daily_return_pct": 1.6056,
       "prices": {
         "META": 736.5999755859375,
@@ -5777,7 +5777,7 @@
     },
     {
       "date": "2026-09-23",
-      "index_value": 1080.8954,
+      "index_value": 1065.4504,
       "daily_return_pct": -0.1742,
       "prices": {
         "META": 744.0999755859375,
@@ -5882,7 +5882,7 @@
     },
     {
       "date": "2026-09-24",
-      "index_value": 1084.8011,
+      "index_value": 1069.3003,
       "daily_return_pct": 0.3613,
       "prices": {
         "META": 777.5900268554688,
@@ -5987,7 +5987,7 @@
     },
     {
       "date": "2026-09-28",
-      "index_value": 1074.1005,
+      "index_value": 1058.7526,
       "daily_return_pct": -0.9864,
       "prices": {
         "META": 715.6199951171875,
