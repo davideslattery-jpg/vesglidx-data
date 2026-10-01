@@ -377,6 +377,139 @@ def compute_shares(target_weights, prices, index_value):
             if t in prices and prices[t] > 0}
 
 
+# ── CATCH-UP (Oct 2026) ───────────────────────────────────────────────────
+# Yahoo's newest daily bar is sometimes incomplete for a few hours after the
+# close. The tracker used to take "the newest row", so a late run could record
+# the PREVIOUS day again and today was skipped for good (Sep 2026: 9/14, 9/16,
+# 9/21, 9/25, 9/29, 9/30). Each run now pulls the last month of closes and
+# records EVERY trading day the history is missing since the last rebalance,
+# but only days on which at least MIN_COVERAGE of constituents have a close.
+# An incomplete newest bar is skipped and picked up by the next run.
+CATCHUP_PERIOD = '1mo'
+MIN_COVERAGE   = 0.95
+
+
+def _close_frame(df, ticker=None):
+    """yfinance frame -> DataFrame of closes (columns = tickers)."""
+    if df is None or df.empty:
+        return pd.DataFrame()
+    if isinstance(df.columns, pd.MultiIndex):
+        closes = df['Close']
+        if ticker is not None and isinstance(closes, pd.DataFrame):
+            closes = closes.iloc[:, :1]
+            closes.columns = [ticker]
+        return closes
+    return df[['Close']].rename(columns={'Close': ticker})
+
+
+def fetch_price_panel(tickers, period=CATCHUP_PERIOD):
+    """Daily closes for the last ~month: index = 'YYYY-MM-DD', columns = tickers."""
+    panel = pd.DataFrame()
+    for attempt in range(2):
+        try:
+            panel = _close_frame(yf.download(tickers, period=period, interval='1d',
+                                             auto_adjust=True, progress=False,
+                                             threads=False))
+            if not panel.empty:
+                break
+        except Exception as e:
+            print(f"  panel download attempt {attempt+1} failed: {e}")
+            time.sleep(2)
+    missing = [t for t in tickers if t not in panel.columns or panel[t].isna().all()]
+    if missing:
+        print(f"  retrying {len(missing)} ticker(s) individually...")
+    for t in missing:
+        try:
+            one = _close_frame(yf.download(t, period=period, interval='1d',
+                                           auto_adjust=True, progress=False,
+                                           threads=False), ticker=t)
+            if not one.empty:
+                panel = one if panel.empty else panel.drop(columns=[t], errors='ignore').join(one, how='outer')
+        except Exception:
+            pass
+        time.sleep(1)
+    if panel.empty:
+        return panel
+    panel.index = [pd.Timestamp(d).strftime('%Y-%m-%d') for d in panel.index]
+    panel = panel[~panel.index.duplicated(keep='last')]
+    return panel.sort_index()
+
+
+def catch_up(history, weights_data, today):
+    """Record every complete trading day missing since the last rebalance.
+    Returns True if anything was written."""
+    panel = fetch_price_panel(TICKERS)
+    if panel.empty:
+        print("ERROR: no price data returned. Nothing written.")
+        return False
+    today_str = today.strftime('%Y-%m-%d')
+    have = {r['date'] for r in history['daily']}
+    rebal = weights_data.get('rebal_date', INCEPTION_DATE)
+    last = history['daily'][-1]['date']
+    print(f"Price data covers {panel.index[0]} .. {panel.index[-1]}; "
+          f"history ends {last}")
+
+    todo = []
+    for d in panel.index:
+        if d <= rebal or d in have or d > today_str:
+            continue
+        row = panel.loc[d]
+        n = sum(1 for t in TICKERS if t in row.index and pd.notna(row[t]))
+        if n >= MIN_COVERAGE * len(TICKERS):
+            todo.append(d)
+        else:
+            print(f"  {d}: only {n}/{len(TICKERS)} closes available yet — "
+                  "skipped, the next run will pick it up")
+    if not todo:
+        print("No new complete trading days to record.")
+        return False
+
+    for d in sorted(todo):
+        prev = max((r for r in history['daily'] if r['date'] < d),
+                   key=lambda r: r['date'])
+        row = panel.loc[d]
+        prices = {t: float(row[t]) for t in TICKERS
+                  if t in row.index and pd.notna(row[t])}
+        for t in TICKERS:                          # forward-fill stragglers
+            if t not in prices and t in prev.get('prices', {}):
+                prices[t] = prev['prices'][t]
+        shares = weights_data['shares']
+        value = sum(shares[t] * prices[t] for t in shares if t in prices)
+        rebalanced = False
+        if d > last and is_rebalancing_day(
+                datetime.strptime(d, '%Y-%m-%d').date(), history,
+                weights_data.get('rebal_date')):
+            print(f"\n>>> QUARTERLY REBALANCE at the {d} close <<<")
+            weights_data.clear()
+            weights_data.update({
+                'shares': compute_shares(TARGET_WEIGHT, prices, value),
+                'rebal_date': d,
+                'rebal_prices': prices,
+                'target_weights': TARGET_WEIGHT,
+            })
+            save_json(WEIGHTS_FILE, weights_data)
+            rebalanced = True
+        kind = 'gap filled' if d < last else 'new day'
+        print(f"  {d}: {value:,.4f}  ({kind}{', REBALANCED' if rebalanced else ''})")
+        history['daily'].append({
+            'date': d,
+            'index_value': round(value, 4),
+            'daily_return_pct': 0.0,
+            'prices': {t: prices[t] for t in TICKERS if t in prices},
+            'rebalanced': rebalanced,
+        })
+        history['daily'].sort(key=lambda r: r['date'])
+        last = max(last, d)
+
+    # daily returns follow from consecutive levels (fixes the day after a gap)
+    daily = history['daily']
+    for i, r in enumerate(daily):
+        r['daily_return_pct'] = 0.0 if i == 0 else round(
+            (r['index_value'] / daily[i - 1]['index_value'] - 1) * 100, 4)
+    save_json(HISTORY_FILE, history)
+    return True
+
+
 # ── MAIN ──────────────────────────────────────────────────────────────────
 def main():
     today = date.today()
@@ -402,6 +535,15 @@ def main():
               f"has been live since {INCEPTION_DATE}. Refusing to start a new "
               "index. Run from the folder/repo that holds the live JSON files. "
               "Nothing written, nothing pushed.")
+        return
+
+    if not inception:
+        if not catch_up(history, weights_data, today):
+            print("Nothing written, nothing pushed.")
+            return
+        last_rec = history['daily'][-1]
+        publish_snapshot(history, weights_data, today, last_rec['date'],
+                         last_rec['index_value'], last_rec['daily_return_pct'] / 100)
         return
 
     print(f"Fetching prices for {len(TICKERS)} constituents...")
@@ -445,62 +587,6 @@ def main():
         rebalanced = True
         print(f"\nINCEPTION DAY — index set to {BASE_VALUE:,.2f} "
               f"on all {len(shares)} constituents")
-    else:
-        # De-duplicate FIRST: drop any existing record carrying today's stamp
-        # BEFORE selecting the comparison record. Otherwise a re-run of the
-        # same market day (or a run on a market holiday, when the freshest
-        # data is still the prior session) compares the entry against itself,
-        # gets a ~0% return, and overwrites the true stored daily return.
-        history['daily'] = [d for d in history['daily'] if d['date'] != stamp]
-        if not history['daily']:
-            print("ERROR: no prior trading-day record to compare against "
-                  "after de-duplication. Nothing written.")
-            return
-        prev = history['daily'][-1]
-        prev_value  = prev['index_value']
-        prev_prices = prev.get('prices', {})
-        # forward-fill any name missing today with its last known price
-        for t in TICKERS:
-            if t not in prices and t in prev_prices:
-                prices[t] = prev_prices[t]
-
-        # Stale-data guard: never write a record dated before the last one.
-        if stamp < prev['date']:
-            print(f"ERROR: market data dated {stamp} is older than last record "
-                  f"{prev['date']}. Nothing written.")
-            return
-
-        # Value today's close with the shares held going INTO today.
-        old_shares = weights_data.get('shares', {})
-        index_value = sum(old_shares[t] * prices[t] for t in old_shares if t in prices)
-
-        market_date = datetime.strptime(stamp, '%Y-%m-%d').date()
-        # A re-run of the rebalance day itself: shares were already reset at
-        # this close, so keep them and keep the record flagged.
-        if weights_data.get('rebal_date') == stamp:
-            print("Re-run of rebalance day — keeping existing post-rebalance shares")
-            weights_data['_rerun'] = True
-        rebalanced = weights_data.pop('_rerun', False) or is_rebalancing_day(
-            market_date, history, weights_data.get('rebal_date'))
-        if rebalanced and weights_data.get('rebal_date') != stamp:
-            # FIX (Sep 2026): shares were previously reset at today's prices
-            # using YESTERDAY's index value, which erased the rebalance day's
-            # return. Rebalance at the close: reset shares to target weights at
-            # today's prices so that they are worth today's index value.
-            print("\n>>> QUARTERLY REBALANCE <<<")
-            shares = compute_shares(TARGET_WEIGHT, prices, index_value)
-            weights_data = {
-                'shares': shares,
-                'rebal_date': stamp,
-                'rebal_prices': prices,
-                'target_weights': TARGET_WEIGHT,
-            }
-            save_json(WEIGHTS_FILE, weights_data)
-            print(f"Shares reset to target weights for {len(shares)} constituents")
-        daily_return = index_value / prev_value - 1
-        print(f"\nDaily return: {daily_return*100:+.3f}%")
-        print(f"Index value: {prev_value:,.2f} -> {index_value:,.2f}")
-
     # ── Append to history ──
     entry = {
         'date': stamp,
@@ -513,7 +599,10 @@ def main():
     history['daily'].append(entry)
     history['daily'].sort(key=lambda x: x['date'])
     save_json(HISTORY_FILE, history)
+    publish_snapshot(history, weights_data, today, stamp, index_value, daily_return)
 
+
+def publish_snapshot(history, weights_data, today, stamp, index_value, daily_return):
     # ── Latest snapshot (for website) ──
     total_return = (index_value / BASE_VALUE - 1) * 100
     # YTD: measure from the prior year-end close. If the index launched this

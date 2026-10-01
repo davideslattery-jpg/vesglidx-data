@@ -7,10 +7,19 @@ on:
     # Monday–Friday. Cron is always UTC and does not shift for daylight saving,
     # but 22:00 UTC lands after the close year-round (6pm EDT / 5pm EST).
     - cron: '0 22 * * 1-5'
+    # Next-morning catch-up, 12:30 UTC Tue–Sat (8:30am EDT / 7:30am EST), before
+    # the open. GitHub often starts the evening run hours late, when Yahoo's
+    # newest daily bar can still be incomplete; the tracker skips an incomplete
+    # day and this run records it. Runs that find nothing new write nothing.
+    - cron: '30 12 * * 2-6'
   workflow_dispatch:   # also lets you run it on demand from the Actions tab
 
 permissions:
   contents: write      # allows the run to publish the updated JSON back to the repo
+
+concurrency:
+  group: vesglidx-tracker   # never let two runs write the JSON at the same time
+  cancel-in-progress: false
 
 jobs:
   update:
