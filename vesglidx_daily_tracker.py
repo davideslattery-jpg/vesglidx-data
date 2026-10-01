@@ -25,7 +25,8 @@ MECHANICS:
       1,000.00 exactly. shares_i = weight_i * 1000 / price_i.
     * Each day after: index_value = sum(shares_i * price_i). Weights drift with
       prices (correct buy-and-hold behaviour between rebalances).
-    * Quarterly rebalance (first trading day of Mar/Jun/Sep/Dec): shares are
+    * Quarterly rebalance (first trading day of Jan/Apr/Jul/Oct from Oct 2026;
+      Mar/Jun/Sep/Dec before): shares are
       reset to the CURRENT target weights at that day's prices, holding the
       index value continuous (no jump). Update CONSTITUENTS below before a
       rebalance if the published basket has changed.
@@ -51,7 +52,7 @@ MONTHLY_FILE = 'vesglidx_monthly_reports.json'
 
 BASE_VALUE     = 1000.00
 INCEPTION_DATE = '2026-07-01'
-REBAL_MONTHS   = {3, 6, 9, 12}   # quarterly
+REBAL_MONTHS   = {1, 4, 7, 10}   # quarterly: first trading day of Jan/Apr/Jul/Oct (from Oct 2026)
 
 # Last-resort manual close overrides, applied ONLY if both Yahoo and Stooq fail
 # for a name. Key = ticker, value = that day's official close. Empty for normal
@@ -68,112 +69,108 @@ GITHUB_REPO   = 'davideslattery-jpg/vesglidx-data'
 GITHUB_BRANCH = 'main'
 PUSH_FILES    = [LATEST_FILE, HISTORY_FILE, WEIGHTS_FILE]
 
-# ── PUBLISHED CONSTITUENTS (VESGLIDX-FS-V3, 97 names) ──────────────────────
-# (ticker, GICS sector, Verde ESG Score, published index weight %)
-# Source of truth = VESGLIDX_Factsheet V3.0. Weights are normalised below.
-#
-# NOTE: Marsh & McLennan rebranded to "Marsh" and CHANGED its NYSE ticker from
-# MMC to MRSH (effective ~July 1, 2026). MMC no longer resolves on any feed;
-# MRSH is the live symbol. The factsheet's original "MRSH" was correct and
-# should stand. (This reverses the earlier, now-outdated MRSH->MMC switch.)
+# ── PUBLISHED CONSTITUENTS (Q4 2026 reconstitution, 95 names) ─────────────
+# (ticker, GICS sector, Verde ESG Score, target index weight %)
+# Effective at the October 1, 2026 close. Source: December-review pro forma
+# (verde_pipeline/review_2026-12-01/proforma_constituents_C_fullRubric_netZero.csv),
+# scored Sep 30, 2026 under V3.0 with the published climate point schedule.
+# The July 1 inception basket (97 names) is in git history (commit fe5f1a9).
 CONSTITUENTS = [
-    ('META',  'Communication Services', 88.3, 10.00),
-    ('V',     'Financials',             93.0,  6.27),
-    ('NVDA',  'Information Technology',  87.5,  6.16),
-    ('MSFT',  'Information Technology',  87.5,  6.16),
-    ('MA',    'Financials',             89.6,  4.26),
-    ('ABBV',  'Health Care',            89.2,  3.92),
-    ('NFLX',  'Communication Services', 93.6,  3.55),
-    ('UNH',   'Health Care',            84.8,  3.37),
-    ('HD',    'Consumer Discretionary', 93.6,  3.18),
-    ('PM',    'Consumer Staples',       90.2,  2.75),
-    ('AXP',   'Financials',             85.4,  1.98),
-    ('VZ',    'Communication Services', 91.4,  1.90),
-    ('MCD',   'Consumer Discretionary', 86.4,  1.88),
-    ('AMGN',  'Health Care',            85.5,  1.77),
-    ('UNP',   'Industrials',            91.1,  1.61),
-    ('T',     'Communication Services', 91.4,  1.58),
-    ('GILD',  'Health Care',            86.2,  1.51),
-    ('ETN',   'Industrials',            83.2,  1.40),
-    ('DE',    'Industrials',            80.2,  1.38),
-    ('PLD',   'Real Estate',            89.4,  1.33),
-    ('BKNG',  'Consumer Discretionary', 90.6,  1.28),
-    ('DELL',  'Information Technology',  92.1,  1.27),
-    ('SPGI',  'Financials',             89.6,  1.23),
-    ('QCOM',  'Information Technology',  89.4,  1.10),
-    ('PANW',  'Information Technology',  91.4,  1.09),
-    ('MO',    'Consumer Staples',       82.3,  1.09),
-    ('PH',    'Industrials',            82.7,  1.01),
-    ('MDT',   'Health Care',            87.0,  1.00),
-    ('NEM',   'Materials',              82.0,  0.96),
-    ('TT',    'Industrials',            85.5,  0.95),
-    ('CMCSA', 'Communication Services', 91.4,  0.85),
-    ('ELV',   'Health Care',            86.0,  0.85),
-    ('WDC',   'Information Technology',  89.2,  0.85),
-    ('CSX',   'Industrials',            86.8,  0.83),
-    ('MCO',   'Financials',             93.0,  0.80),
-    ('FDX',   'Industrials',            91.1,  0.79),
-    ('MRSH',  'Financials',             89.6,  0.78),   # was MMC; NYSE ticker changed to MRSH (Marsh rebrand, ~Jul 2026)
-    ('ECL',   'Materials',              84.8,  0.67),
-    ('NSC',   'Industrials',            82.0,  0.63),
-    ('AON',   'Financials',             78.3,  0.60),
-    ('NOW',   'Information Technology',  91.4,  0.57),
-    ('FTNT',  'Information Technology',  91.4,  0.52),
-    ('ACN',   'Information Technology',  87.5,  0.52),
-    ('ROK',   'Industrials',            92.0,  0.50),
-    ('NDAQ',  'Financials',             89.6,  0.48),
-    ('ADBE',  'Information Technology',  87.5,  0.48),
-    ('EW',    'Health Care',            83.2,  0.45),
-    ('MSCI',  'Financials',             82.9,  0.41),
-    ('MET',   'Financials',             66.1,  0.39),
-    ('INTU',  'Information Technology',  87.5,  0.38),
-    ('CMG',   'Consumer Discretionary', 90.6,  0.37),
-    ('PYPL',  'Financials',             93.0,  0.37),
-    ('KDP',   'Consumer Staples',       81.1,  0.37),
-    ('XYZ',   'Financials',             82.9,  0.37),   # Block, Inc. (was SQ)
-    ('CIEN',  'Information Technology',  91.4,  0.34),
-    ('WAT',   'Health Care',            86.6,  0.34),
-    ('HSY',   'Consumer Staples',       82.3,  0.34),
-    ('LVS',   'Consumer Discretionary', 90.6,  0.33),
-    ('LITE',  'Information Technology',  87.5,  0.32),
-    ('UAL',   'Industrials',            82.0,  0.31),
-    ('IQV',   'Health Care',            91.9,  0.31),
-    ('KVUE',  'Consumer Staples',       81.7,  0.30),
-    ('EL',    'Consumer Staples',       89.9,  0.30),
-    ('PCG',   'Utilities',              70.0,  0.29),
-    ('GEHC',  'Health Care',            89.1,  0.29),
-    ('VEEV',  'Health Care',            87.8,  0.27),
-    ('OTIS',  'Industrials',            91.1,  0.27),
-    ('TPR',   'Consumer Discretionary', 84.6,  0.26),
-    ('IR',    'Industrials',            84.2,  0.26),
-    ('XYL',   'Industrials',            89.8,  0.26),
-    ('NTRS',  'Financials',             66.1,  0.23),
-    ('VRSK',  'Industrials',            86.3,  0.23),
-    ('NRG',   'Utilities',              74.5,  0.22),
-    ('SBAC',  'Real Estate',            91.5,  0.22),
-    ('LH',    'Health Care',            89.1,  0.21),
-    ('CHD',   'Consumer Staples',       84.0,  0.21),
-    ('PPL',   'Utilities',              71.6,  0.21),
-    ('PPG',   'Materials',              75.2,  0.21),
-    ('RL',    'Consumer Discretionary', 86.1,  0.21),
-    ('ESS',   'Real Estate',            89.4,  0.19),
-    ('ES',    'Utilities',              65.2,  0.19),
-    ('EFX',   'Industrials',            82.8,  0.19),
-    ('NTAP',  'Information Technology',  87.5,  0.16),
-    ('LII',   'Industrials',            80.4,  0.16),
-    ('AMCR',  'Materials',              78.9,  0.15),
-    ('DECK',  'Consumer Discretionary', 90.6,  0.15),
-    ('BBY',   'Consumer Discretionary', 86.4,  0.14),
-    ('REG',   'Real Estate',            85.1,  0.14),
-    ('BALL',  'Materials',              86.2,  0.13),
-    ('DOC',   'Real Estate',            85.1,  0.13),   # Healthpeak Properties
-    ('HAS',   'Consumer Discretionary', 87.2,  0.11),
-    ('AVY',   'Materials',              84.7,  0.11),
-    ('BXP',   'Real Estate',            89.4,  0.11),
-    ('SWK',   'Industrials',            80.8,  0.11),
-    ('CLX',   'Consumer Staples',       84.1,  0.10),
-    ('FRT',   'Real Estate',            88.1,  0.10),
-    ('PTC',   'Information Technology',  87.5,  0.07),
+    ('META'  , 'Communication Services'  ,  88.29,  10.000000),
+    ('NVDA'  , 'Information Technology'  ,  87.20,   7.406093),
+    ('V'     , 'Financials'              ,  99.44,   7.284848),
+    ('MA'    , 'Financials'              ,  89.63,   4.720658),
+    ('ABBV'  , 'Health Care'             ,  89.15,   4.499740),
+    ('PM'    , 'Consumer Staples'        ,  96.76,   3.154582),
+    ('NFLX'  , 'Communication Services'  ,  93.57,   2.961482),
+    ('HD'    , 'Consumer Discretionary'  ,  93.57,   2.890337),
+    ('DELL'  , 'Information Technology'  ,  97.38,   2.430278),
+    ('TMO'   , 'Health Care'             ,  87.01,   2.375454),
+    ('PANW'  , 'Information Technology'  ,  97.79,   2.310726),
+    ('AXP'   , 'Financials'              ,  91.83,   2.047426),
+    ('VZ'    , 'Communication Services'  ,  91.40,   1.903223),
+    ('T'     , 'Communication Services'  ,  91.40,   1.672181),
+    ('MCD'   , 'Consumer Discretionary'  ,  92.70,   1.655786),
+    ('UNP'   , 'Industrials'             ,  90.90,   1.609487),
+    ('ETN'   , 'Industrials'             ,  88.52,   1.606369),
+    ('DHR'   , 'Health Care'             ,  94.04,   1.601402),
+    ('QCOM'  , 'Information Technology'  ,  94.65,   1.341022),
+    ('BKNG'  , 'Consumer Discretionary'  ,  96.96,   1.325357),
+    ('PLD'   , 'Real Estate'             ,  95.71,   1.317730),
+    ('SPGI'  , 'Financials'              ,  96.06,   1.215263),
+    ('BMY'   , 'Health Care'             ,  86.36,   1.203354),
+    ('PH'    , 'Industrials'             ,  82.66,   1.091454),
+    ('NEM'   , 'Materials'               ,  82.06,   1.088701),
+    ('MO'    , 'Consumer Staples'        ,  87.03,   1.070521),
+    ('WDC'   , 'Information Technology'  ,  89.26,   1.069017),
+    ('MDT'   , 'Health Care'             ,  87.08,   1.049843),
+    ('TT'    , 'Industrials'             ,  90.43,   0.984352),
+    ('NOW'   , 'Information Technology'  ,  91.36,   0.911071),
+    ('FTNT'  , 'Information Technology'  ,  91.36,   0.869297),
+    ('MCO'   , 'Financials'              ,  99.44,   0.852281),
+    ('MRSH'  , 'Financials'              ,  96.06,   0.849578),
+    ('CSX'   , 'Industrials'             ,  86.61,   0.816723),
+    ('EMR'   , 'Industrials'             ,  85.17,   0.807269),
+    ('CMCSA' , 'Communication Services'  ,  91.40,   0.769087),
+    ('ECL'   , 'Materials'               ,  90.69,   0.761848),
+    ('ACN'   , 'Information Technology'  ,  93.63,   0.748213),
+    ('MRNA'  , 'Health Care'             ,  87.98,   0.726740),
+    ('FDX'   , 'Industrials'             ,  90.90,   0.664561),
+    ('NSC'   , 'Industrials'             ,  86.61,   0.660141),
+    ('ADBE'  , 'Information Technology'  ,  93.63,   0.640932),
+    ('CDNS'  , 'Information Technology'  ,  90.26,   0.592520),
+    ('LITE'  , 'Information Technology'  ,  93.63,   0.582334),
+    ('NDAQ'  , 'Financials'              ,  96.06,   0.539271),
+    ('ROK'   , 'Industrials'             ,  97.18,   0.511236),
+    ('AON'   , 'Financials'              ,  78.33,   0.496896),
+    ('INTU'  , 'Information Technology'  ,  93.63,   0.492713),
+    ('IQV'   , 'Health Care'             ,  98.21,   0.473103),
+    ('PYPL'  , 'Financials'              ,  93.01,   0.457628),
+    ('EBAY'  , 'Consumer Discretionary'  ,  87.35,   0.450631),
+    ('VEEV'  , 'Health Care'             ,  87.61,   0.438747),
+    ('WAT'   , 'Health Care'             ,  91.81,   0.433030),
+    ('MET'   , 'Financials'              ,  66.06,   0.431007),
+    ('CARR'  , 'Industrials'             ,  86.40,   0.427001),
+    ('ILMN'  , 'Health Care'             ,  91.56,   0.416400),
+    ('XYZ'   , 'Financials'              ,  82.86,   0.397029),
+    ('CMG'   , 'Consumer Discretionary'  ,  90.53,   0.395226),
+    ('MSCI'  , 'Financials'              ,  89.29,   0.380392),
+    ('CBRE'  , 'Real Estate'             ,  89.68,   0.363315),
+    ('EL'    , 'Consumer Staples'        ,  89.74,   0.329702),
+    ('CIEN'  , 'Information Technology'  ,  91.36,   0.320027),
+    ('UAL'   , 'Industrials'             ,  81.80,   0.318430),
+    ('GEHC'  , 'Health Care'             ,  94.26,   0.306133),
+    ('HSY'   , 'Consumer Staples'        ,  83.07,   0.287773),
+    ('IR'    , 'Industrials'             ,  89.29,   0.285399),
+    ('KHC'   , 'Consumer Staples'        ,  85.05,   0.251885),
+    ('OTIS'  , 'Industrials'             ,  90.90,   0.243299),
+    ('LVS'   , 'Consumer Discretionary'  ,  90.53,   0.242316),
+    ('LH'    , 'Health Care'             ,  88.97,   0.242096),
+    ('XYL'   , 'Industrials'             ,  89.42,   0.229572),
+    ('TPR'   , 'Consumer Discretionary'  ,  89.46,   0.223192),
+    ('NTRS'  , 'Financials'              ,  66.06,   0.222637),
+    ('VRSK'  , 'Industrials'             ,  92.51,   0.218566),
+    ('CHD'   , 'Consumer Staples'        ,  84.38,   0.205704),
+    ('PPL'   , 'Utilities'               ,  71.58,   0.192295),
+    ('PPG'   , 'Materials'               ,  75.27,   0.190371),
+    ('HPQ'   , 'Information Technology'  ,  90.15,   0.183556),
+    ('ESS'   , 'Real Estate'             ,  89.29,   0.180915),
+    ('AMCR'  , 'Materials'               ,  84.75,   0.179212),
+    ('BBY'   , 'Consumer Discretionary'  ,  86.27,   0.172277),
+    ('SBAC'  , 'Real Estate'             ,  91.32,   0.170878),
+    ('NRG'   , 'Utilities'               ,  74.54,   0.161852),
+    ('BR'    , 'Industrials'             ,  81.45,   0.160677),
+    ('EFX'   , 'Industrials'             ,  82.81,   0.144818),
+    ('BALL'  , 'Materials'               ,  86.56,   0.140979),
+    ('HAS'   , 'Consumer Discretionary'  ,  93.53,   0.126510),
+    ('AVY'   , 'Materials'               ,  85.02,   0.120211),
+    ('TECH'  , 'Health Care'             ,  87.61,   0.108033),
+    ('BXP'   , 'Real Estate'             ,  89.29,   0.107429),
+    ('DECK'  , 'Consumer Discretionary'  ,  90.53,   0.104462),
+    ('CSGP'  , 'Real Estate'             ,  87.61,   0.104325),
+    ('PTC'   , 'Information Technology'  ,  93.63,   0.102202),
+    ('FRT'   , 'Real Estate'             ,  87.79,   0.090083),
+    ('CLX'   , 'Consumer Staples'        ,  83.32,   0.089276),
 ]
 
 TICKERS       = [c[0] for c in CONSTITUENTS]
@@ -438,7 +435,8 @@ def fetch_price_panel(tickers, period=CATCHUP_PERIOD):
 def catch_up(history, weights_data, today):
     """Record every complete trading day missing since the last rebalance.
     Returns True if anything was written."""
-    panel = fetch_price_panel(TICKERS)
+    universe = sorted(set(TICKERS) | set(weights_data.get('shares', {})))
+    panel = fetch_price_panel(universe)
     if panel.empty:
         print("ERROR: no price data returned. Nothing written.")
         return False
@@ -454,11 +452,11 @@ def catch_up(history, weights_data, today):
         if d <= rebal or d in have or d > today_str:
             continue
         row = panel.loc[d]
-        n = sum(1 for t in TICKERS if t in row.index and pd.notna(row[t]))
-        if n >= MIN_COVERAGE * len(TICKERS):
+        n = sum(1 for t in universe if t in row.index and pd.notna(row[t]))
+        if n >= MIN_COVERAGE * len(universe):
             todo.append(d)
         else:
-            print(f"  {d}: only {n}/{len(TICKERS)} closes available yet — "
+            print(f"  {d}: only {n}/{len(universe)} closes available yet — "
                   "skipped, the next run will pick it up")
     if not todo:
         print("No new complete trading days to record.")
@@ -468,9 +466,9 @@ def catch_up(history, weights_data, today):
         prev = max((r for r in history['daily'] if r['date'] < d),
                    key=lambda r: r['date'])
         row = panel.loc[d]
-        prices = {t: float(row[t]) for t in TICKERS
+        prices = {t: float(row[t]) for t in universe
                   if t in row.index and pd.notna(row[t])}
-        for t in TICKERS:                          # forward-fill stragglers
+        for t in universe:                         # forward-fill stragglers
             if t not in prices and t in prev.get('prices', {}):
                 prices[t] = prev['prices'][t]
         shares = weights_data['shares']
@@ -495,7 +493,7 @@ def catch_up(history, weights_data, today):
             'date': d,
             'index_value': round(value, 4),
             'daily_return_pct': 0.0,
-            'prices': {t: prices[t] for t in TICKERS if t in prices},
+            'prices': {t: prices[t] for t in universe if t in prices},
             'rebalanced': rebalanced,
         })
         history['daily'].sort(key=lambda r: r['date'])
@@ -626,7 +624,7 @@ def publish_snapshot(history, weights_data, today, stamp, index_value, daily_ret
         'since_inception_return_pct': round(total_return, 2),
         'base_value': BASE_VALUE,
         'inception_date': INCEPTION_DATE,
-        'constituent_count': len(TICKERS),
+        'constituent_count': len(weights_data.get('shares', {})) or len(TICKERS),
         'last_rebalance_date': weights_data['rebal_date'],
         'updated_at': datetime.now().isoformat(),
     }
