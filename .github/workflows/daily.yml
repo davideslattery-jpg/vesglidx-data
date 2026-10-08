@@ -42,3 +42,11 @@ jobs:
           # automatic per-run token — no personal access token needed here.
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: python vesglidx_daily_tracker.py
+
+      # Verde ESG Market Neutral Index. Separate script and separate JSON
+      # files; runs even if the step above fails, and never touches VESGLIDX.
+      - name: Run the VESGMNX tracker
+        if: always()
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: python vesgmnx_daily_tracker.py
