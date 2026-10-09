@@ -1,0 +1,19 @@
+{
+  "daily": [
+    {
+      "date": "2026-10-08",
+      "index_value": 1000.0,
+      "daily_return_pct": 0.0,
+      "long_leg": 1.0,
+      "short_leg": 1.0,
+      "rebalanced": true
+    }
+  ],
+  "metadata": {
+    "index_name": "Verde ESG Market Neutral Index",
+    "ticker": "VESGMNX",
+    "base_value": 1000.0,
+    "inception_date": "2026-10-08",
+    "methodology": "VESGMNX-M-V1"
+  }
+}
