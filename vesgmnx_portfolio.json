@@ -1,0 +1,1671 @@
+{
+  "rebal_date": "2026-10-08",
+  "index_value_at_rebal": 1000.0,
+  "hedge_ratio": 0.876886,
+  "beta_long": 0.7866,
+  "beta_short": 0.897,
+  "scores_as_of": "2026-09-30",
+  "excluded_no_price": [],
+  "long": {
+    "NFLX": {
+      "weight": 0.00874751,
+      "price": 71.56999969482422,
+      "beta": 0.3114,
+      "sector": "Communication Services",
+      "score": 93.57
+    },
+    "VZ": {
+      "weight": 0.00874751,
+      "price": 46.349998474121094,
+      "beta": 0.3,
+      "sector": "Communication Services",
+      "score": 91.4
+    },
+    "CMCSA": {
+      "weight": 0.00874751,
+      "price": 21.209999084472656,
+      "beta": 0.3,
+      "sector": "Communication Services",
+      "score": 91.4
+    },
+    "T": {
+      "weight": 0.00874751,
+      "price": 24.8700008392334,
+      "beta": 0.3,
+      "sector": "Communication Services",
+      "score": 91.4
+    },
+    "META": {
+      "weight": 0.00874751,
+      "price": 720.8900146484375,
+      "beta": 1.4557,
+      "sector": "Communication Services",
+      "score": 88.29
+    },
+    "BKNG": {
+      "weight": 0.00934394,
+      "price": 159.97000122070312,
+      "beta": 0.8525,
+      "sector": "Consumer Discretionary",
+      "score": 96.96
+    },
+    "HD": {
+      "weight": 0.00934394,
+      "price": 295.4700012207031,
+      "beta": 0.6975,
+      "sector": "Consumer Discretionary",
+      "score": 93.57
+    },
+    "HAS": {
+      "weight": 0.00934394,
+      "price": 92.5,
+      "beta": 0.7404,
+      "sector": "Consumer Discretionary",
+      "score": 93.53
+    },
+    "MCD": {
+      "weight": 0.00934394,
+      "price": 236.89999389648438,
+      "beta": 0.3,
+      "sector": "Consumer Discretionary",
+      "score": 92.7
+    },
+    "LVS": {
+      "weight": 0.00934394,
+      "price": 36.099998474121094,
+      "beta": 0.6109,
+      "sector": "Consumer Discretionary",
+      "score": 90.53
+    },
+    "DECK": {
+      "weight": 0.00934394,
+      "price": 82.55999755859375,
+      "beta": 1.0477,
+      "sector": "Consumer Discretionary",
+      "score": 90.53
+    },
+    "CMG": {
+      "weight": 0.00934394,
+      "price": 32.68000030517578,
+      "beta": 0.6621,
+      "sector": "Consumer Discretionary",
+      "score": 90.53
+    },
+    "TPR": {
+      "weight": 0.00934394,
+      "price": 115.81999969482422,
+      "beta": 1.0685,
+      "sector": "Consumer Discretionary",
+      "score": 89.46
+    },
+    "EBAY": {
+      "weight": 0.00934394,
+      "price": 111.9800033569336,
+      "beta": 0.7091,
+      "sector": "Consumer Discretionary",
+      "score": 87.35
+    },
+    "BBY": {
+      "weight": 0.00934394,
+      "price": 88.4000015258789,
+      "beta": 0.707,
+      "sector": "Consumer Discretionary",
+      "score": 86.27
+    },
+    "PM": {
+      "weight": 0.00937234,
+      "price": 200.5,
+      "beta": 0.3,
+      "sector": "Consumer Staples",
+      "score": 96.76
+    },
+    "EL": {
+      "weight": 0.00937234,
+      "price": 94.31999969482422,
+      "beta": 1.4224,
+      "sector": "Consumer Staples",
+      "score": 89.74
+    },
+    "MO": {
+      "weight": 0.00937234,
+      "price": 71.41999816894531,
+      "beta": 0.3,
+      "sector": "Consumer Staples",
+      "score": 87.03
+    },
+    "KHC": {
+      "weight": 0.00937234,
+      "price": 22.479999542236328,
+      "beta": 0.3,
+      "sector": "Consumer Staples",
+      "score": 85.05
+    },
+    "CHD": {
+      "weight": 0.00937234,
+      "price": 97.7300033569336,
+      "beta": 0.3,
+      "sector": "Consumer Staples",
+      "score": 84.38
+    },
+    "CLX": {
+      "weight": 0.00937234,
+      "price": 83.44000244140625,
+      "beta": 0.3348,
+      "sector": "Consumer Staples",
+      "score": 83.32
+    },
+    "HSY": {
+      "weight": 0.00937234,
+      "price": 162.5399932861328,
+      "beta": 0.3,
+      "sector": "Consumer Staples",
+      "score": 83.07
+    },
+    "EOG": {
+      "weight": 0.0083499,
+      "price": 148.50999450683594,
+      "beta": 0.3,
+      "sector": "Energy",
+      "score": 57.86
+    },
+    "WMB": {
+      "weight": 0.0083499,
+      "price": 72.33999633789062,
+      "beta": 0.3,
+      "sector": "Energy",
+      "score": 54.85
+    },
+    "SLB": {
+      "weight": 0.0083499,
+      "price": 48.97999954223633,
+      "beta": 0.763,
+      "sector": "Energy",
+      "score": 53.74
+    },
+    "FANG": {
+      "weight": 0.0083499,
+      "price": 191.67999267578125,
+      "beta": 0.3,
+      "sector": "Energy",
+      "score": 53.74
+    },
+    "MPC": {
+      "weight": 0.0083499,
+      "price": 463.3399963378906,
+      "beta": 0.3,
+      "sector": "Energy",
+      "score": 53.32
+    },
+    "V": {
+      "weight": 0.00888785,
+      "price": 375.1000061035156,
+      "beta": 0.3,
+      "sector": "Financials",
+      "score": 99.44
+    },
+    "MCO": {
+      "weight": 0.00888785,
+      "price": 458.69000244140625,
+      "beta": 0.5188,
+      "sector": "Financials",
+      "score": 99.44
+    },
+    "NDAQ": {
+      "weight": 0.00888785,
+      "price": 92.37000274658203,
+      "beta": 0.6669,
+      "sector": "Financials",
+      "score": 96.06
+    },
+    "MRSH": {
+      "weight": 0.00888785,
+      "price": 176.6699981689453,
+      "beta": 0.3,
+      "sector": "Financials",
+      "score": 96.06
+    },
+    "SPGI": {
+      "weight": 0.00888785,
+      "price": 402.7300109863281,
+      "beta": 0.3318,
+      "sector": "Financials",
+      "score": 96.06
+    },
+    "PYPL": {
+      "weight": 0.00888785,
+      "price": 55.02000045776367,
+      "beta": 1.1273,
+      "sector": "Financials",
+      "score": 93.01
+    },
+    "AXP": {
+      "weight": 0.00888785,
+      "price": 308.1000061035156,
+      "beta": 0.9564,
+      "sector": "Financials",
+      "score": 91.83
+    },
+    "MA": {
+      "weight": 0.00888785,
+      "price": 574.760009765625,
+      "beta": 0.3,
+      "sector": "Financials",
+      "score": 89.63
+    },
+    "MSCI": {
+      "weight": 0.00888785,
+      "price": 561.6699829101562,
+      "beta": 0.3481,
+      "sector": "Financials",
+      "score": 89.29
+    },
+    "XYZ": {
+      "weight": 0.00888785,
+      "price": 75.2300033569336,
+      "beta": 1.8743,
+      "sector": "Financials",
+      "score": 82.86
+    },
+    "AON": {
+      "weight": 0.00888785,
+      "price": 277.1199951171875,
+      "beta": 0.3,
+      "sector": "Financials",
+      "score": 78.33
+    },
+    "NTRS": {
+      "weight": 0.00888785,
+      "price": 168.5,
+      "beta": 0.9214,
+      "sector": "Financials",
+      "score": 66.06
+    },
+    "MET": {
+      "weight": 0.00888785,
+      "price": 98.47000122070312,
+      "beta": 0.6591,
+      "sector": "Financials",
+      "score": 66.06
+    },
+    "BAC": {
+      "weight": 0.00888785,
+      "price": 53.61000061035156,
+      "beta": 0.7309,
+      "sector": "Financials",
+      "score": 56.59
+    },
+    "AJG": {
+      "weight": 0.00888785,
+      "price": 234.0500030517578,
+      "beta": 0.3,
+      "sector": "Financials",
+      "score": 56.59
+    },
+    "MS": {
+      "weight": 0.00888785,
+      "price": 187.44000244140625,
+      "beta": 1.3998,
+      "sector": "Financials",
+      "score": 56.59
+    },
+    "BLK": {
+      "weight": 0.00888785,
+      "price": 1065.3499755859375,
+      "beta": 1.1961,
+      "sector": "Financials",
+      "score": 56.59
+    },
+    "IQV": {
+      "weight": 0.00917571,
+      "price": 258.8800048828125,
+      "beta": 0.7329,
+      "sector": "Health Care",
+      "score": 98.21
+    },
+    "GEHC": {
+      "weight": 0.00917571,
+      "price": 64.22000122070312,
+      "beta": 0.7572,
+      "sector": "Health Care",
+      "score": 94.26
+    },
+    "DHR": {
+      "weight": 0.00917571,
+      "price": 217.4600067138672,
+      "beta": 0.3957,
+      "sector": "Health Care",
+      "score": 94.04
+    },
+    "WAT": {
+      "weight": 0.00917571,
+      "price": 429.1300048828125,
+      "beta": 0.8383,
+      "sector": "Health Care",
+      "score": 91.81
+    },
+    "ILMN": {
+      "weight": 0.00917571,
+      "price": 264.57000732421875,
+      "beta": 0.7742,
+      "sector": "Health Care",
+      "score": 91.56
+    },
+    "ABBV": {
+      "weight": 0.00917571,
+      "price": 272.4200134277344,
+      "beta": 0.3,
+      "sector": "Health Care",
+      "score": 89.15
+    },
+    "LH": {
+      "weight": 0.00917571,
+      "price": 314.20001220703125,
+      "beta": 0.3,
+      "sector": "Health Care",
+      "score": 88.97
+    },
+    "MRNA": {
+      "weight": 0.00917571,
+      "price": 197.0,
+      "beta": 1.9381,
+      "sector": "Health Care",
+      "score": 87.98
+    },
+    "TECH": {
+      "weight": 0.00917571,
+      "price": 72.44999694824219,
+      "beta": 0.7864,
+      "sector": "Health Care",
+      "score": 87.61
+    },
+    "VEEV": {
+      "weight": 0.00917571,
+      "price": 284.8399963378906,
+      "beta": 0.5611,
+      "sector": "Health Care",
+      "score": 87.61
+    },
+    "MDT": {
+      "weight": 0.00917571,
+      "price": 87.75,
+      "beta": 0.3,
+      "sector": "Health Care",
+      "score": 87.08
+    },
+    "TMO": {
+      "weight": 0.00917571,
+      "price": 651.97998046875,
+      "beta": 0.5439,
+      "sector": "Health Care",
+      "score": 87.01
+    },
+    "BMY": {
+      "weight": 0.00917571,
+      "price": 59.58000183105469,
+      "beta": 0.3,
+      "sector": "Health Care",
+      "score": 86.36
+    },
+    "ROK": {
+      "weight": 0.00958952,
+      "price": 434.1400146484375,
+      "beta": 1.3721,
+      "sector": "Industrials",
+      "score": 97.18
+    },
+    "VRSK": {
+      "weight": 0.00958952,
+      "price": 175.49000549316406,
+      "beta": 0.3,
+      "sector": "Industrials",
+      "score": 92.51
+    },
+    "FDX": {
+      "weight": 0.00958952,
+      "price": 291.7300109863281,
+      "beta": 0.8878,
+      "sector": "Industrials",
+      "score": 90.9
+    },
+    "OTIS": {
+      "weight": 0.00958952,
+      "price": 66.11000061035156,
+      "beta": 0.3,
+      "sector": "Industrials",
+      "score": 90.9
+    },
+    "UNP": {
+      "weight": 0.00958952,
+      "price": 278.20001220703125,
+      "beta": 0.3,
+      "sector": "Industrials",
+      "score": 90.9
+    },
+    "TT": {
+      "weight": 0.00958952,
+      "price": 469.94000244140625,
+      "beta": 1.088,
+      "sector": "Industrials",
+      "score": 90.43
+    },
+    "XYL": {
+      "weight": 0.00958952,
+      "price": 101.98999786376953,
+      "beta": 0.78,
+      "sector": "Industrials",
+      "score": 89.42
+    },
+    "IR": {
+      "weight": 0.00958952,
+      "price": 78.0,
+      "beta": 1.1837,
+      "sector": "Industrials",
+      "score": 89.29
+    },
+    "ETN": {
+      "weight": 0.00958952,
+      "price": 424.510009765625,
+      "beta": 1.7493,
+      "sector": "Industrials",
+      "score": 88.52
+    },
+    "CSX": {
+      "weight": 0.00958952,
+      "price": 47.34000015258789,
+      "beta": 0.4299,
+      "sector": "Industrials",
+      "score": 86.61
+    },
+    "NSC": {
+      "weight": 0.00958952,
+      "price": 316.989990234375,
+      "beta": 0.3,
+      "sector": "Industrials",
+      "score": 86.61
+    },
+    "CARR": {
+      "weight": 0.00958952,
+      "price": 55.83000183105469,
+      "beta": 1.2776,
+      "sector": "Industrials",
+      "score": 86.4
+    },
+    "EMR": {
+      "weight": 0.00958952,
+      "price": 159.05999755859375,
+      "beta": 1.5328,
+      "sector": "Industrials",
+      "score": 85.17
+    },
+    "EFX": {
+      "weight": 0.00958952,
+      "price": 145.5399932861328,
+      "beta": 0.5574,
+      "sector": "Industrials",
+      "score": 82.81
+    },
+    "PH": {
+      "weight": 0.00958952,
+      "price": 946.9600219726562,
+      "beta": 0.8347,
+      "sector": "Industrials",
+      "score": 82.66
+    },
+    "UAL": {
+      "weight": 0.00958952,
+      "price": 107.44000244140625,
+      "beta": 2.1759,
+      "sector": "Industrials",
+      "score": 81.8
+    },
+    "BR": {
+      "weight": 0.00958952,
+      "price": 165.2100067138672,
+      "beta": 0.3,
+      "sector": "Industrials",
+      "score": 81.45
+    },
+    "PANW": {
+      "weight": 0.01065038,
+      "price": 398.5,
+      "beta": 1.1928,
+      "sector": "Information Technology",
+      "score": 97.79
+    },
+    "DELL": {
+      "weight": 0.01065038,
+      "price": 574.5499877929688,
+      "beta": 2.2361,
+      "sector": "Information Technology",
+      "score": 97.38
+    },
+    "QCOM": {
+      "weight": 0.01065038,
+      "price": 176.00999450683594,
+      "beta": 2.117,
+      "sector": "Information Technology",
+      "score": 94.65
+    },
+    "PTC": {
+      "weight": 0.01065038,
+      "price": 193.72999572753906,
+      "beta": 0.6114,
+      "sector": "Information Technology",
+      "score": 93.63
+    },
+    "ACN": {
+      "weight": 0.01065038,
+      "price": 208.36000061035156,
+      "beta": 0.3,
+      "sector": "Information Technology",
+      "score": 93.63
+    },
+    "ADBE": {
+      "weight": 0.01065038,
+      "price": 241.0500030517578,
+      "beta": 0.3491,
+      "sector": "Information Technology",
+      "score": 93.63
+    },
+    "LITE": {
+      "weight": 0.01065038,
+      "price": 1048.5999755859375,
+      "beta": 2.5,
+      "sector": "Information Technology",
+      "score": 93.63
+    },
+    "INTU": {
+      "weight": 0.01065038,
+      "price": 303.8800048828125,
+      "beta": 0.3,
+      "sector": "Information Technology",
+      "score": 93.63
+    },
+    "NOW": {
+      "weight": 0.01065038,
+      "price": 139.75,
+      "beta": 0.6444,
+      "sector": "Information Technology",
+      "score": 91.36
+    },
+    "CIEN": {
+      "weight": 0.01065038,
+      "price": 425.92999267578125,
+      "beta": 2.5,
+      "sector": "Information Technology",
+      "score": 91.36
+    },
+    "FTNT": {
+      "weight": 0.01065038,
+      "price": 189.10000610351562,
+      "beta": 0.9221,
+      "sector": "Information Technology",
+      "score": 91.36
+    },
+    "CDNS": {
+      "weight": 0.01065038,
+      "price": 348.8399963378906,
+      "beta": 1.5888,
+      "sector": "Information Technology",
+      "score": 90.26
+    },
+    "HPQ": {
+      "weight": 0.01065038,
+      "price": 32.439998626708984,
+      "beta": 0.7523,
+      "sector": "Information Technology",
+      "score": 90.15
+    },
+    "WDC": {
+      "weight": 0.01065038,
+      "price": 393.30999755859375,
+      "beta": 2.5,
+      "sector": "Information Technology",
+      "score": 89.26
+    },
+    "ECL": {
+      "weight": 0.00861498,
+      "price": 281.69000244140625,
+      "beta": 0.4835,
+      "sector": "Materials",
+      "score": 90.69
+    },
+    "BALL": {
+      "weight": 0.00861498,
+      "price": 58.369998931884766,
+      "beta": 0.3,
+      "sector": "Materials",
+      "score": 86.56
+    },
+    "AVY": {
+      "weight": 0.00861498,
+      "price": 167.6199951171875,
+      "beta": 0.4385,
+      "sector": "Materials",
+      "score": 85.02
+    },
+    "AMCR": {
+      "weight": 0.00861498,
+      "price": 41.880001068115234,
+      "beta": 0.8031,
+      "sector": "Materials",
+      "score": 84.75
+    },
+    "NEM": {
+      "weight": 0.00861498,
+      "price": 115.55000305175781,
+      "beta": 1.6073,
+      "sector": "Materials",
+      "score": 82.06
+    },
+    "PPG": {
+      "weight": 0.00861498,
+      "price": 105.45999908447266,
+      "beta": 1.0401,
+      "sector": "Materials",
+      "score": 75.27
+    },
+    "PLD": {
+      "weight": 0.00852031,
+      "price": 129.2899932861328,
+      "beta": 0.4472,
+      "sector": "Real Estate",
+      "score": 95.71
+    },
+    "SBAC": {
+      "weight": 0.00852031,
+      "price": 170.00999450683594,
+      "beta": 0.3,
+      "sector": "Real Estate",
+      "score": 91.32
+    },
+    "CBRE": {
+      "weight": 0.00852031,
+      "price": 131.0800018310547,
+      "beta": 0.857,
+      "sector": "Real Estate",
+      "score": 89.68
+    },
+    "BXP": {
+      "weight": 0.00852031,
+      "price": 59.31999969482422,
+      "beta": 0.7225,
+      "sector": "Real Estate",
+      "score": 89.29
+    },
+    "ESS": {
+      "weight": 0.00852031,
+      "price": 268.5799865722656,
+      "beta": 0.3,
+      "sector": "Real Estate",
+      "score": 89.29
+    },
+    "FRT": {
+      "weight": 0.00852031,
+      "price": 105.45999908447266,
+      "beta": 0.3,
+      "sector": "Real Estate",
+      "score": 87.79
+    },
+    "CSGP": {
+      "weight": 0.00852031,
+      "price": 29.809999465942383,
+      "beta": 0.3,
+      "sector": "Real Estate",
+      "score": 87.61
+    },
+    "NRG": {
+      "weight": 0.00880432,
+      "price": 106.31999969482422,
+      "beta": 1.3944,
+      "sector": "Utilities",
+      "score": 74.54
+    },
+    "PPL": {
+      "weight": 0.00880432,
+      "price": 34.099998474121094,
+      "beta": 0.3,
+      "sector": "Utilities",
+      "score": 71.58
+    },
+    "VST": {
+      "weight": 0.00880432,
+      "price": 156.13999938964844,
+      "beta": 1.4883,
+      "sector": "Utilities",
+      "score": 64.26
+    },
+    "CEG": {
+      "weight": 0.00880432,
+      "price": 285.07000732421875,
+      "beta": 1.3622,
+      "sector": "Utilities",
+      "score": 61.8
+    },
+    "PEG": {
+      "weight": 0.00880432,
+      "price": 71.83999633789062,
+      "beta": 0.3,
+      "sector": "Utilities",
+      "score": 60.08
+    },
+    "AWK": {
+      "weight": 0.00880432,
+      "price": 128.17999267578125,
+      "beta": 0.3,
+      "sector": "Utilities",
+      "score": 59.46
+    },
+    "PCG": {
+      "weight": 0.00880432,
+      "price": 12.670000076293945,
+      "beta": 0.3,
+      "sector": "Utilities",
+      "score": 59.46
+    }
+  },
+  "short": {
+    "PSKY": {
+      "weight": 0.02186879,
+      "price": 9.279999732971191,
+      "beta": 0.6141,
+      "sector": "Communication Services",
+      "score": 43.94
+    },
+    "ECHO": {
+      "weight": 0.02186879,
+      "price": 93.36000061035156,
+      "beta": 1.5065,
+      "sector": "Communication Services",
+      "score": 43.94
+    },
+    "LEN": {
+      "weight": 0.01038215,
+      "price": 77.5999984741211,
+      "beta": 0.9347,
+      "sector": "Consumer Discretionary",
+      "score": 47.82
+    },
+    "GPC": {
+      "weight": 0.01038215,
+      "price": 128.1699981689453,
+      "beta": 0.4774,
+      "sector": "Consumer Discretionary",
+      "score": 47.76
+    },
+    "ORLY": {
+      "weight": 0.01038215,
+      "price": 86.01000213623047,
+      "beta": 0.3,
+      "sector": "Consumer Discretionary",
+      "score": 47.11
+    },
+    "DPZ": {
+      "weight": 0.01038215,
+      "price": 308.6499938964844,
+      "beta": 0.3,
+      "sector": "Consumer Discretionary",
+      "score": 47.11
+    },
+    "TJX": {
+      "weight": 0.01038215,
+      "price": 138.75,
+      "beta": 0.3,
+      "sector": "Consumer Discretionary",
+      "score": 47.11
+    },
+    "NCLH": {
+      "weight": 0.01038215,
+      "price": 15.489999771118164,
+      "beta": 1.9542,
+      "sector": "Consumer Discretionary",
+      "score": 47.11
+    },
+    "DASH": {
+      "weight": 0.01038215,
+      "price": 191.7100067138672,
+      "beta": 1.4082,
+      "sector": "Consumer Discretionary",
+      "score": 41.9
+    },
+    "CVNA": {
+      "weight": 0.01038215,
+      "price": 63.20000076293945,
+      "beta": 2.3517,
+      "sector": "Consumer Discretionary",
+      "score": 41.53
+    },
+    "TSCO": {
+      "weight": 0.01038215,
+      "price": 33.47999954223633,
+      "beta": 0.3906,
+      "sector": "Consumer Discretionary",
+      "score": 40.41
+    },
+    "STZ": {
+      "weight": 0.00937234,
+      "price": 123.62999725341797,
+      "beta": 0.3,
+      "sector": "Consumer Staples",
+      "score": 48.91
+    },
+    "MNST": {
+      "weight": 0.00937234,
+      "price": 43.650001525878906,
+      "beta": 0.3,
+      "sector": "Consumer Staples",
+      "score": 48.91
+    },
+    "BG": {
+      "weight": 0.00937234,
+      "price": 107.81999969482422,
+      "beta": 0.3,
+      "sector": "Consumer Staples",
+      "score": 48.91
+    },
+    "DG": {
+      "weight": 0.00937234,
+      "price": 124.2699966430664,
+      "beta": 0.5827,
+      "sector": "Consumer Staples",
+      "score": 45.46
+    },
+    "COST": {
+      "weight": 0.00937234,
+      "price": 947.9199829101562,
+      "beta": 0.3,
+      "sector": "Consumer Staples",
+      "score": 45.46
+    },
+    "CASY": {
+      "weight": 0.00937234,
+      "price": 642.280029296875,
+      "beta": 0.3,
+      "sector": "Consumer Staples",
+      "score": 42.58
+    },
+    "ADM": {
+      "weight": 0.00937234,
+      "price": 82.44999694824219,
+      "beta": 0.3,
+      "sector": "Consumer Staples",
+      "score": 26.48
+    },
+    "HAL": {
+      "weight": 0.01043738,
+      "price": 32.56999969482422,
+      "beta": 0.3,
+      "sector": "Energy",
+      "score": 46.28
+    },
+    "DVN": {
+      "weight": 0.01043738,
+      "price": 48.91999816894531,
+      "beta": 0.3,
+      "sector": "Energy",
+      "score": 45.17
+    },
+    "XOM": {
+      "weight": 0.01043738,
+      "price": 168.5,
+      "beta": 0.3,
+      "sector": "Energy",
+      "score": 39.42
+    },
+    "KMI": {
+      "weight": 0.01043738,
+      "price": 32.25,
+      "beta": 0.3,
+      "sector": "Energy",
+      "score": 37.62
+    },
+    "APO": {
+      "weight": 0.00944334,
+      "price": 115.30000305175781,
+      "beta": 1.2012,
+      "sector": "Financials",
+      "score": 44.83
+    },
+    "USB": {
+      "weight": 0.00944334,
+      "price": 57.029998779296875,
+      "beta": 0.7279,
+      "sector": "Financials",
+      "score": 44.83
+    },
+    "SCHW": {
+      "weight": 0.00944334,
+      "price": 96.87000274658203,
+      "beta": 0.4631,
+      "sector": "Financials",
+      "score": 44.83
+    },
+    "RJF": {
+      "weight": 0.00944334,
+      "price": 158.60000610351562,
+      "beta": 0.7461,
+      "sector": "Financials",
+      "score": 44.83
+    },
+    "JKHY": {
+      "weight": 0.00944334,
+      "price": 149.0500030517578,
+      "beta": 0.3,
+      "sector": "Financials",
+      "score": 44.83
+    },
+    "BX": {
+      "weight": 0.00944334,
+      "price": 112.68000030517578,
+      "beta": 1.3732,
+      "sector": "Financials",
+      "score": 44.83
+    },
+    "HOOD": {
+      "weight": 0.00944334,
+      "price": 107.01000213623047,
+      "beta": 2.5,
+      "sector": "Financials",
+      "score": 44.71
+    },
+    "AMP": {
+      "weight": 0.00944334,
+      "price": 499.0799865722656,
+      "beta": 0.7963,
+      "sector": "Financials",
+      "score": 44.71
+    },
+    "BEN": {
+      "weight": 0.00944334,
+      "price": 32.400001525878906,
+      "beta": 1.2471,
+      "sector": "Financials",
+      "score": 43.61
+    },
+    "ERIE": {
+      "weight": 0.00944334,
+      "price": 226.5399932861328,
+      "beta": 0.3,
+      "sector": "Financials",
+      "score": 43.61
+    },
+    "CBOE": {
+      "weight": 0.00944334,
+      "price": 294.0799865722656,
+      "beta": 0.3,
+      "sector": "Financials",
+      "score": 43.61
+    },
+    "COIN": {
+      "weight": 0.00944334,
+      "price": 172.0,
+      "beta": 2.5,
+      "sector": "Financials",
+      "score": 43.61
+    },
+    "L": {
+      "weight": 0.00944334,
+      "price": 107.5999984741211,
+      "beta": 0.3,
+      "sector": "Financials",
+      "score": 43.61
+    },
+    "SYF": {
+      "weight": 0.00944334,
+      "price": 73.72000122070312,
+      "beta": 1.2305,
+      "sector": "Financials",
+      "score": 43.61
+    },
+    "IBKR": {
+      "weight": 0.00944334,
+      "price": 86.47000122070312,
+      "beta": 2.0153,
+      "sector": "Financials",
+      "score": 43.0
+    },
+    "CPAY": {
+      "weight": 0.00944334,
+      "price": 402.0799865722656,
+      "beta": 0.8535,
+      "sector": "Financials",
+      "score": 33.57
+    },
+    "RVTY": {
+      "weight": 0.01084403,
+      "price": 152.16000366210938,
+      "beta": 1.158,
+      "sector": "Health Care",
+      "score": 46.12
+    },
+    "INCY": {
+      "weight": 0.01084403,
+      "price": 112.75,
+      "beta": 0.4326,
+      "sector": "Health Care",
+      "score": 45.31
+    },
+    "DXCM": {
+      "weight": 0.01084403,
+      "price": 84.41000366210938,
+      "beta": 0.6441,
+      "sector": "Health Care",
+      "score": 45.03
+    },
+    "VRTX": {
+      "weight": 0.01084403,
+      "price": 503.25,
+      "beta": 0.5005,
+      "sector": "Health Care",
+      "score": 44.04
+    },
+    "ABT": {
+      "weight": 0.01084403,
+      "price": 98.48999786376953,
+      "beta": 0.3,
+      "sector": "Health Care",
+      "score": 44.02
+    },
+    "MTD": {
+      "weight": 0.01084403,
+      "price": 1529.4599609375,
+      "beta": 0.7832,
+      "sector": "Health Care",
+      "score": 43.65
+    },
+    "HCA": {
+      "weight": 0.01084403,
+      "price": 445.010009765625,
+      "beta": 0.3,
+      "sector": "Health Care",
+      "score": 43.39
+    },
+    "IDXX": {
+      "weight": 0.01084403,
+      "price": 513.1400146484375,
+      "beta": 0.8574,
+      "sector": "Health Care",
+      "score": 42.01
+    },
+    "MRK": {
+      "weight": 0.01084403,
+      "price": 142.3800048828125,
+      "beta": 0.3,
+      "sector": "Health Care",
+      "score": 36.61
+    },
+    "UHS": {
+      "weight": 0.01084403,
+      "price": 175.72000122070312,
+      "beta": 0.3,
+      "sector": "Health Care",
+      "score": 36.27
+    },
+    "PODD": {
+      "weight": 0.01084403,
+      "price": 134.47000122070312,
+      "beta": 0.3,
+      "sector": "Health Care",
+      "score": 35.21
+    },
+    "SNA": {
+      "weight": 0.00958952,
+      "price": 358.8800048828125,
+      "beta": 0.557,
+      "sector": "Industrials",
+      "score": 44.76
+    },
+    "ODFL": {
+      "weight": 0.00958952,
+      "price": 181.64999389648438,
+      "beta": 0.9844,
+      "sector": "Industrials",
+      "score": 44.76
+    },
+    "PAYX": {
+      "weight": 0.00958952,
+      "price": 104.45999908447266,
+      "beta": 0.3,
+      "sector": "Industrials",
+      "score": 44.76
+    },
+    "AOS": {
+      "weight": 0.00958952,
+      "price": 56.560001373291016,
+      "beta": 0.7612,
+      "sector": "Industrials",
+      "score": 44.69
+    },
+    "HUBB": {
+      "weight": 0.00958952,
+      "price": 475.4100036621094,
+      "beta": 1.2114,
+      "sector": "Industrials",
+      "score": 44.61
+    },
+    "PNR": {
+      "weight": 0.00958952,
+      "price": 52.29999923706055,
+      "beta": 0.9313,
+      "sector": "Industrials",
+      "score": 44.39
+    },
+    "HONA": {
+      "weight": 0.00958952,
+      "price": 154.00999450683594,
+      "beta": 1.0,
+      "sector": "Industrials",
+      "score": 44.36
+    },
+    "EME": {
+      "weight": 0.00958952,
+      "price": 778.239990234375,
+      "beta": 1.8791,
+      "sector": "Industrials",
+      "score": 43.99
+    },
+    "NDSN": {
+      "weight": 0.00958952,
+      "price": 326.8699951171875,
+      "beta": 0.8351,
+      "sector": "Industrials",
+      "score": 43.54
+    },
+    "LUV": {
+      "weight": 0.00958952,
+      "price": 41.36000061035156,
+      "beta": 1.5631,
+      "sector": "Industrials",
+      "score": 43.45
+    },
+    "FERG": {
+      "weight": 0.00958952,
+      "price": 216.72999572753906,
+      "beta": 1.1679,
+      "sector": "Industrials",
+      "score": 41.83
+    },
+    "TDG": {
+      "weight": 0.00958952,
+      "price": 1089.300048828125,
+      "beta": 0.7275,
+      "sector": "Industrials",
+      "score": 41.74
+    },
+    "ROL": {
+      "weight": 0.00958952,
+      "price": 32.2599983215332,
+      "beta": 0.3,
+      "sector": "Industrials",
+      "score": 41.5
+    },
+    "CAT": {
+      "weight": 0.00958952,
+      "price": 796.1799926757812,
+      "beta": 1.7448,
+      "sector": "Industrials",
+      "score": 40.64
+    },
+    "FDXF": {
+      "weight": 0.00958952,
+      "price": 115.6500015258789,
+      "beta": 1.0,
+      "sector": "Industrials",
+      "score": 38.65
+    },
+    "WM": {
+      "weight": 0.00958952,
+      "price": 210.10000610351562,
+      "beta": 0.3,
+      "sector": "Industrials",
+      "score": 36.1
+    },
+    "AXON": {
+      "weight": 0.00958952,
+      "price": 417.30999755859375,
+      "beta": 1.5486,
+      "sector": "Industrials",
+      "score": 28.97
+    },
+    "APH": {
+      "weight": 0.00994036,
+      "price": 85.31999969482422,
+      "beta": 1.7571,
+      "sector": "Information Technology",
+      "score": 47.06
+    },
+    "TYL": {
+      "weight": 0.00994036,
+      "price": 331.1499938964844,
+      "beta": 0.3,
+      "sector": "Information Technology",
+      "score": 47.04
+    },
+    "APP": {
+      "weight": 0.00994036,
+      "price": 280.1199951171875,
+      "beta": 2.1486,
+      "sector": "Information Technology",
+      "score": 45.66
+    },
+    "ON": {
+      "weight": 0.00994036,
+      "price": 79.41000366210938,
+      "beta": 2.5,
+      "sector": "Information Technology",
+      "score": 44.91
+    },
+    "Q": {
+      "weight": 0.00994036,
+      "price": 126.68000030517578,
+      "beta": 2.5,
+      "sector": "Information Technology",
+      "score": 44.04
+    },
+    "GEN": {
+      "weight": 0.00994036,
+      "price": 22.75,
+      "beta": 0.8331,
+      "sector": "Information Technology",
+      "score": 43.91
+    },
+    "FICO": {
+      "weight": 0.00994036,
+      "price": 707.4299926757812,
+      "beta": 0.4547,
+      "sector": "Information Technology",
+      "score": 43.91
+    },
+    "DDOG": {
+      "weight": 0.00994036,
+      "price": 273.79998779296875,
+      "beta": 1.1431,
+      "sector": "Information Technology",
+      "score": 43.91
+    },
+    "TDY": {
+      "weight": 0.00994036,
+      "price": 604.8200073242188,
+      "beta": 1.0578,
+      "sector": "Information Technology",
+      "score": 40.98
+    },
+    "INTC": {
+      "weight": 0.00994036,
+      "price": 107.08000183105469,
+      "beta": 2.5,
+      "sector": "Information Technology",
+      "score": 40.82
+    },
+    "JBL": {
+      "weight": 0.00994036,
+      "price": 299.1600036621094,
+      "beta": 2.0777,
+      "sector": "Information Technology",
+      "score": 40.64
+    },
+    "COHR": {
+      "weight": 0.00994036,
+      "price": 302.3500061035156,
+      "beta": 2.5,
+      "sector": "Information Technology",
+      "score": 38.51
+    },
+    "PLTR": {
+      "weight": 0.00994036,
+      "price": 198.77999877929688,
+      "beta": 1.9131,
+      "sector": "Information Technology",
+      "score": 36.69
+    },
+    "MPWR": {
+      "weight": 0.00994036,
+      "price": 1369.800048828125,
+      "beta": 2.5,
+      "sector": "Information Technology",
+      "score": 34.54
+    },
+    "SMCI": {
+      "weight": 0.00994036,
+      "price": 42.77000045776367,
+      "beta": 2.5,
+      "sector": "Information Technology",
+      "score": 26.34
+    },
+    "NUE": {
+      "weight": 0.01033797,
+      "price": 246.13999938964844,
+      "beta": 0.951,
+      "sector": "Materials",
+      "score": 48.1
+    },
+    "VMC": {
+      "weight": 0.01033797,
+      "price": 246.25999450683594,
+      "beta": 0.8076,
+      "sector": "Materials",
+      "score": 44.29
+    },
+    "MOS": {
+      "weight": 0.01033797,
+      "price": 19.729999542236328,
+      "beta": 0.7475,
+      "sector": "Materials",
+      "score": 43.92
+    },
+    "APD": {
+      "weight": 0.01033797,
+      "price": 278.3800048828125,
+      "beta": 0.3,
+      "sector": "Materials",
+      "score": 43.89
+    },
+    "PKG": {
+      "weight": 0.01033797,
+      "price": 229.94000244140625,
+      "beta": 0.7411,
+      "sector": "Materials",
+      "score": 39.94
+    },
+    "PSA": {
+      "weight": 0.00852031,
+      "price": 285.5199890136719,
+      "beta": 0.4102,
+      "sector": "Real Estate",
+      "score": 46.9
+    },
+    "UDR": {
+      "weight": 0.00852031,
+      "price": 33.56999969482422,
+      "beta": 0.3,
+      "sector": "Real Estate",
+      "score": 46.9
+    },
+    "INVH": {
+      "weight": 0.00852031,
+      "price": 26.479999542236328,
+      "beta": 0.3,
+      "sector": "Real Estate",
+      "score": 46.9
+    },
+    "CCI": {
+      "weight": 0.00852031,
+      "price": 68.88999938964844,
+      "beta": 0.3,
+      "sector": "Real Estate",
+      "score": 46.43
+    },
+    "ARE": {
+      "weight": 0.00852031,
+      "price": 45.599998474121094,
+      "beta": 0.7147,
+      "sector": "Real Estate",
+      "score": 45.42
+    },
+    "CPT": {
+      "weight": 0.00852031,
+      "price": 96.76000213623047,
+      "beta": 0.3,
+      "sector": "Real Estate",
+      "score": 43.81
+    },
+    "EXR": {
+      "weight": 0.00852031,
+      "price": 133.1199951171875,
+      "beta": 0.37,
+      "sector": "Real Estate",
+      "score": 42.1
+    },
+    "PNW": {
+      "weight": 0.0102717,
+      "price": 97.9800033569336,
+      "beta": 0.3,
+      "sector": "Utilities",
+      "score": 42.61
+    },
+    "SO": {
+      "weight": 0.0102717,
+      "price": 86.1500015258789,
+      "beta": 0.3,
+      "sector": "Utilities",
+      "score": 40.02
+    },
+    "LNT": {
+      "weight": 0.0102717,
+      "price": 65.5,
+      "beta": 0.3,
+      "sector": "Utilities",
+      "score": 39.21
+    },
+    "CMS": {
+      "weight": 0.0102717,
+      "price": 65.33999633789062,
+      "beta": 0.3,
+      "sector": "Utilities",
+      "score": 38.85
+    },
+    "ETR": {
+      "weight": 0.0102717,
+      "price": 102.48999786376953,
+      "beta": 0.3,
+      "sector": "Utilities",
+      "score": 38.76
+    },
+    "AES": {
+      "weight": 0.0102717,
+      "price": 14.930000305175781,
+      "beta": 0.3879,
+      "sector": "Utilities",
+      "score": 29.7
+    }
+  },
+  "last_prices": {
+    "NFLX": 71.56999969482422,
+    "VZ": 46.349998474121094,
+    "CMCSA": 21.209999084472656,
+    "T": 24.8700008392334,
+    "META": 720.8900146484375,
+    "BKNG": 159.97000122070312,
+    "HD": 295.4700012207031,
+    "HAS": 92.5,
+    "MCD": 236.89999389648438,
+    "LVS": 36.099998474121094,
+    "DECK": 82.55999755859375,
+    "CMG": 32.68000030517578,
+    "TPR": 115.81999969482422,
+    "EBAY": 111.9800033569336,
+    "BBY": 88.4000015258789,
+    "PM": 200.5,
+    "EL": 94.31999969482422,
+    "MO": 71.41999816894531,
+    "KHC": 22.479999542236328,
+    "CHD": 97.7300033569336,
+    "CLX": 83.44000244140625,
+    "HSY": 162.5399932861328,
+    "EOG": 148.50999450683594,
+    "WMB": 72.33999633789062,
+    "SLB": 48.97999954223633,
+    "FANG": 191.67999267578125,
+    "MPC": 463.3399963378906,
+    "V": 375.1000061035156,
+    "MCO": 458.69000244140625,
+    "NDAQ": 92.37000274658203,
+    "MRSH": 176.6699981689453,
+    "SPGI": 402.7300109863281,
+    "PYPL": 55.02000045776367,
+    "AXP": 308.1000061035156,
+    "MA": 574.760009765625,
+    "MSCI": 561.6699829101562,
+    "XYZ": 75.2300033569336,
+    "AON": 277.1199951171875,
+    "NTRS": 168.5,
+    "MET": 98.47000122070312,
+    "BAC": 53.61000061035156,
+    "AJG": 234.0500030517578,
+    "MS": 187.44000244140625,
+    "BLK": 1065.3499755859375,
+    "IQV": 258.8800048828125,
+    "GEHC": 64.22000122070312,
+    "DHR": 217.4600067138672,
+    "WAT": 429.1300048828125,
+    "ILMN": 264.57000732421875,
+    "ABBV": 272.4200134277344,
+    "LH": 314.20001220703125,
+    "MRNA": 197.0,
+    "TECH": 72.44999694824219,
+    "VEEV": 284.8399963378906,
+    "MDT": 87.75,
+    "TMO": 651.97998046875,
+    "BMY": 59.58000183105469,
+    "ROK": 434.1400146484375,
+    "VRSK": 175.49000549316406,
+    "FDX": 291.7300109863281,
+    "OTIS": 66.11000061035156,
+    "UNP": 278.20001220703125,
+    "TT": 469.94000244140625,
+    "XYL": 101.98999786376953,
+    "IR": 78.0,
+    "ETN": 424.510009765625,
+    "CSX": 47.34000015258789,
+    "NSC": 316.989990234375,
+    "CARR": 55.83000183105469,
+    "EMR": 159.05999755859375,
+    "EFX": 145.5399932861328,
+    "PH": 946.9600219726562,
+    "UAL": 107.44000244140625,
+    "BR": 165.2100067138672,
+    "PANW": 398.5,
+    "DELL": 574.5499877929688,
+    "QCOM": 176.00999450683594,
+    "PTC": 193.72999572753906,
+    "ACN": 208.36000061035156,
+    "ADBE": 241.0500030517578,
+    "LITE": 1048.5999755859375,
+    "INTU": 303.8800048828125,
+    "NOW": 139.75,
+    "CIEN": 425.92999267578125,
+    "FTNT": 189.10000610351562,
+    "CDNS": 348.8399963378906,
+    "HPQ": 32.439998626708984,
+    "WDC": 393.30999755859375,
+    "ECL": 281.69000244140625,
+    "BALL": 58.369998931884766,
+    "AVY": 167.6199951171875,
+    "AMCR": 41.880001068115234,
+    "NEM": 115.55000305175781,
+    "PPG": 105.45999908447266,
+    "PLD": 129.2899932861328,
+    "SBAC": 170.00999450683594,
+    "CBRE": 131.0800018310547,
+    "BXP": 59.31999969482422,
+    "ESS": 268.5799865722656,
+    "FRT": 105.45999908447266,
+    "CSGP": 29.809999465942383,
+    "NRG": 106.31999969482422,
+    "PPL": 34.099998474121094,
+    "VST": 156.13999938964844,
+    "CEG": 285.07000732421875,
+    "PEG": 71.83999633789062,
+    "AWK": 128.17999267578125,
+    "PCG": 12.670000076293945,
+    "PSKY": 9.279999732971191,
+    "ECHO": 93.36000061035156,
+    "LEN": 77.5999984741211,
+    "GPC": 128.1699981689453,
+    "ORLY": 86.01000213623047,
+    "DPZ": 308.6499938964844,
+    "TJX": 138.75,
+    "NCLH": 15.489999771118164,
+    "DASH": 191.7100067138672,
+    "CVNA": 63.20000076293945,
+    "TSCO": 33.47999954223633,
+    "STZ": 123.62999725341797,
+    "MNST": 43.650001525878906,
+    "BG": 107.81999969482422,
+    "DG": 124.2699966430664,
+    "COST": 947.9199829101562,
+    "CASY": 642.280029296875,
+    "ADM": 82.44999694824219,
+    "HAL": 32.56999969482422,
+    "DVN": 48.91999816894531,
+    "XOM": 168.5,
+    "KMI": 32.25,
+    "APO": 115.30000305175781,
+    "USB": 57.029998779296875,
+    "SCHW": 96.87000274658203,
+    "RJF": 158.60000610351562,
+    "JKHY": 149.0500030517578,
+    "BX": 112.68000030517578,
+    "HOOD": 107.01000213623047,
+    "AMP": 499.0799865722656,
+    "BEN": 32.400001525878906,
+    "ERIE": 226.5399932861328,
+    "CBOE": 294.0799865722656,
+    "COIN": 172.0,
+    "L": 107.5999984741211,
+    "SYF": 73.72000122070312,
+    "IBKR": 86.47000122070312,
+    "CPAY": 402.0799865722656,
+    "RVTY": 152.16000366210938,
+    "INCY": 112.75,
+    "DXCM": 84.41000366210938,
+    "VRTX": 503.25,
+    "ABT": 98.48999786376953,
+    "MTD": 1529.4599609375,
+    "HCA": 445.010009765625,
+    "IDXX": 513.1400146484375,
+    "MRK": 142.3800048828125,
+    "UHS": 175.72000122070312,
+    "PODD": 134.47000122070312,
+    "SNA": 358.8800048828125,
+    "ODFL": 181.64999389648438,
+    "PAYX": 104.45999908447266,
+    "AOS": 56.560001373291016,
+    "HUBB": 475.4100036621094,
+    "PNR": 52.29999923706055,
+    "HONA": 154.00999450683594,
+    "EME": 778.239990234375,
+    "NDSN": 326.8699951171875,
+    "LUV": 41.36000061035156,
+    "FERG": 216.72999572753906,
+    "TDG": 1089.300048828125,
+    "ROL": 32.2599983215332,
+    "CAT": 796.1799926757812,
+    "FDXF": 115.6500015258789,
+    "WM": 210.10000610351562,
+    "AXON": 417.30999755859375,
+    "APH": 85.31999969482422,
+    "TYL": 331.1499938964844,
+    "APP": 280.1199951171875,
+    "ON": 79.41000366210938,
+    "Q": 126.68000030517578,
+    "GEN": 22.75,
+    "FICO": 707.4299926757812,
+    "DDOG": 273.79998779296875,
+    "TDY": 604.8200073242188,
+    "INTC": 107.08000183105469,
+    "JBL": 299.1600036621094,
+    "COHR": 302.3500061035156,
+    "PLTR": 198.77999877929688,
+    "MPWR": 1369.800048828125,
+    "SMCI": 42.77000045776367,
+    "NUE": 246.13999938964844,
+    "VMC": 246.25999450683594,
+    "MOS": 19.729999542236328,
+    "APD": 278.3800048828125,
+    "PKG": 229.94000244140625,
+    "PSA": 285.5199890136719,
+    "UDR": 33.56999969482422,
+    "INVH": 26.479999542236328,
+    "CCI": 68.88999938964844,
+    "ARE": 45.599998474121094,
+    "CPT": 96.76000213623047,
+    "EXR": 133.1199951171875,
+    "PNW": 97.9800033569336,
+    "SO": 86.1500015258789,
+    "LNT": 65.5,
+    "CMS": 65.33999633789062,
+    "ETR": 102.48999786376953,
+    "AES": 14.930000305175781
+  }
+}
