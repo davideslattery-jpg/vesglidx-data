@@ -249,6 +249,13 @@ def catch_up(history, pf, today):
     today_str = today.strftime('%Y-%m-%d')
     have = {r['date'] for r in history['daily']}
     last = history['daily'][-1]['date']
+    for t, f in base.detect_splits(panel, last, pf.get('last_prices', {})).items():
+        print(f"  SPLIT detected for {t}: price basis x{f:.4f}; reference prices rescaled")
+        for side in ('long', 'short'):
+            if t in pf[side]:
+                pf[side][t]['price'] *= f
+        pf['last_prices'][t] *= f
+        pf.setdefault('split_log', []).append({'ticker': t, 'ref_date': last, 'factor': round(f, 6)})
     todo = []
     for d in panel.index:
         if d <= pf['rebal_date'] or d in have or d > today_str or not bar_is_final(d):
@@ -310,6 +317,13 @@ def catch_up(history, pf, today):
 
 
 def publish(history, pf):
+    try:                                               # company names for the website tables
+        names = load_scores()['name'].to_dict()
+        for side in ('long', 'short'):
+            for t, v in pf[side].items():
+                v.setdefault('name', names.get(t, t))
+    except Exception:
+        pass
     rec = history['daily'][-1]
     value = rec['index_value']
     year = int(rec['date'][:4])
