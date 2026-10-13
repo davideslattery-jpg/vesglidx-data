@@ -49,6 +49,19 @@ HISTORY_FILE = 'vesglidx_history.json'
 LATEST_FILE  = 'vesglidx_latest.json'
 WEIGHTS_FILE = 'vesglidx_weights.json'
 MONTHLY_FILE = 'vesglidx_monthly_reports.json'
+CONSTITUENTS_FILE = 'vesglidx_constituents.json'   # names, sectors, scores, current weights (website table)
+NAMES_FILE   = 'vesgmnx_scores.csv'                # company names (shared with VESGMNX)
+
+# Benchmark shown for context only (not part of the index). Price return, like
+# the index, rebased to the index base value at the inception close.
+BENCHMARK_TICKER = '^GSPC'
+BENCHMARK_NAME   = 'S&P 500 (price return)'
+
+# Split protection: a stored close that differs from Yahoo's split-adjusted
+# close for the same day by a split-sized ratio (e.g. 1/2, 1/4, 3/2) is treated
+# as a split, and the holding is rescaled so its value is unchanged.
+SPLIT_MIN_MOVE  = 1.25        # ignore differences smaller than 25% (dividends, noise)
+SPLIT_TOLERANCE = 0.015       # how close the ratio must be to a split ratio
 
 BASE_VALUE     = 1000.00
 INCEPTION_DATE = '2026-07-01'
@@ -67,7 +80,7 @@ MANUAL_PRICES = {}
 # it in this file. Set PUSH_FILES = [] to turn pushing off.
 GITHUB_REPO   = 'davideslattery-jpg/vesglidx-data'
 GITHUB_BRANCH = 'main'
-PUSH_FILES    = [LATEST_FILE, HISTORY_FILE, WEIGHTS_FILE]
+PUSH_FILES    = [LATEST_FILE, HISTORY_FILE, WEIGHTS_FILE, CONSTITUENTS_FILE]
 
 # ── PUBLISHED CONSTITUENTS (Q4 2026 reconstitution, 95 names) ─────────────
 # (ticker, GICS sector, Verde ESG Score, target index weight %)
@@ -374,6 +387,125 @@ def compute_shares(target_weights, prices, index_value):
             if t in prices and prices[t] > 0}
 
 
+# ── SPLITS (Oct 2026) ─────────────────────────────────────────────────────
+_SPLIT_RATIOS = sorted({n / m for n in range(1, 51) for m in range(1, 51)
+                        if max(n, m) / min(n, m) >= SPLIT_MIN_MOVE
+                        and (min(n, m) <= 4 or max(n, m) % min(n, m) == 0)})
+
+
+def _split_like(f):
+    return any(abs(f / r - 1) <= SPLIT_TOLERANCE for r in _SPLIT_RATIOS)
+
+
+def detect_splits(panel, ref_date, ref_prices):
+    """{ticker: factor} for names whose stored close on ref_date differs from
+    the panel's split-adjusted close on that date by a split-sized ratio.
+    factor = adjusted / stored (0.25 for a 4-for-1 split)."""
+    out = {}
+    if panel is None or panel.empty or ref_date not in panel.index:
+        return out
+    row = panel.loc[ref_date]
+    for t, old in (ref_prices or {}).items():
+        if t in row.index and pd.notna(row[t]) and old and old > 0:
+            f = float(row[t]) / float(old)
+            if (f >= SPLIT_MIN_MOVE or f <= 1 / SPLIT_MIN_MOVE) and _split_like(f):
+                out[t] = f
+    return out
+
+
+def apply_splits(history, weights_data, panel):
+    """Rescale shares and stored prices for any split since the last record."""
+    last = history['daily'][-1]
+    splits = detect_splits(panel, last['date'], last.get('prices', {}))
+    for t, f in splits.items():
+        print(f"  SPLIT detected for {t}: price basis x{f:.4f}; shares rescaled, value unchanged")
+        if t in weights_data.get('shares', {}):
+            weights_data['shares'][t] /= f
+        if t in weights_data.get('rebal_prices', {}):
+            weights_data['rebal_prices'][t] *= f
+        for r in history['daily']:                 # one price basis for forward-fills
+            if t in r.get('prices', {}):
+                r['prices'][t] *= f
+    if splits:
+        weights_data.setdefault('split_log', []).append(
+            {'detected_on': datetime.now().strftime('%Y-%m-%d'), 'ref_date': last['date'],
+             'factors': {t: round(f, 6) for t, f in splits.items()}})
+        save_json(WEIGHTS_FILE, weights_data)
+    return splits
+
+
+# ── BENCHMARK (Oct 2026) ──────────────────────────────────────────────────
+def _benchmark_closes(period):
+    try:
+        df = yf.download(BENCHMARK_TICKER, period=period, interval='1d',
+                         auto_adjust=True, progress=False, threads=False)
+    except Exception as e:
+        print(f"  benchmark download failed: {e}")
+        return {}
+    if df is None or df.empty:
+        return {}
+    close = df['Close']
+    if isinstance(close, pd.DataFrame):
+        close = close.iloc[:, 0]
+    close = close.dropna()
+    return {pd.Timestamp(d).strftime('%Y-%m-%d'): float(v) for d, v in close.items()}
+
+
+def add_benchmark(history):
+    """Attach the S&P 500 close, rebased to BASE_VALUE at the inception close,
+    to every history record that lacks it (first run backfills from inception)."""
+    meta = history.setdefault('metadata', {})
+    missing = [r for r in history['daily'] if 'sp500' not in r]
+    if not missing and 'benchmark_base_close' in meta:
+        return
+    oldest = min([r['date'] for r in missing] + ([] if 'benchmark_base_close' in meta else [INCEPTION_DATE]))
+    days = (date.today() - datetime.strptime(oldest, '%Y-%m-%d').date()).days
+    closes = _benchmark_closes('1mo' if days < 25 else '2y')
+    if 'benchmark_base_close' not in meta:
+        if INCEPTION_DATE not in closes:
+            print(f"  benchmark: no {BENCHMARK_TICKER} close for {INCEPTION_DATE}; will retry next run")
+            return
+        meta.update({'benchmark_ticker': BENCHMARK_TICKER, 'benchmark_name': BENCHMARK_NAME,
+                     'benchmark_base_date': INCEPTION_DATE,
+                     'benchmark_base_close': closes[INCEPTION_DATE]})
+    base = meta['benchmark_base_close']
+    filled = 0
+    for r in missing:
+        c = closes.get(r['date'])
+        if c is not None:
+            r['sp500'] = round(c, 2)
+            r['sp500_rebased'] = round(BASE_VALUE * c / base, 4)
+            filled += 1
+    if filled:
+        print(f"  benchmark: {filled} day(s) of {BENCHMARK_NAME} recorded")
+
+
+# ── CONSTITUENTS FILE (Oct 2026) ──────────────────────────────────────────
+def write_constituents(history, weights_data, stamp):
+    rec = next((r for r in reversed(history['daily']) if r['date'] == stamp), history['daily'][-1])
+    prices = rec.get('prices', {})
+    shares = weights_data.get('shares', {})
+    values = {t: shares[t] * prices[t] for t in shares if t in prices}
+    total = sum(values.values()) or 1.0
+    names = {}
+    if os.path.exists(NAMES_FILE):
+        try:
+            nf = pd.read_csv(NAMES_FILE)
+            names = dict(zip(nf['ticker'].astype(str).str.upper(), nf['name'].astype(str)))
+        except Exception:
+            pass
+    tw = weights_data.get('target_weights', TARGET_WEIGHT)
+    rows = [{'ticker': t, 'name': names.get(t, t), 'sector': SECTOR.get(t),
+             'verde_esg_score': ESG_SCORE.get(t),
+             'target_weight_pct': round(tw.get(t, 0) * 100, 4),
+             'current_weight_pct': round(values[t] / total * 100, 4)}
+            for t in values]
+    rows.sort(key=lambda r: -r['current_weight_pct'])
+    save_json(CONSTITUENTS_FILE, {'index': 'VESGLIDX', 'as_of_date': rec['date'],
+                                  'last_rebalance_date': weights_data.get('rebal_date'),
+                                  'count': len(rows), 'constituents': rows})
+
+
 # ── CATCH-UP (Oct 2026) ───────────────────────────────────────────────────
 # Yahoo's newest daily bar is sometimes incomplete for a few hours after the
 # close. The tracker used to take "the newest row", so a late run could record
@@ -442,6 +574,7 @@ def catch_up(history, weights_data, today):
         return False
     today_str = today.strftime('%Y-%m-%d')
     have = {r['date'] for r in history['daily']}
+    apply_splits(history, weights_data, panel)
     rebal = weights_data.get('rebal_date', INCEPTION_DATE)
     last = history['daily'][-1]['date']
     print(f"Price data covers {panel.index[0]} .. {panel.index[-1]}; "
@@ -498,6 +631,8 @@ def catch_up(history, weights_data, today):
         })
         history['daily'].sort(key=lambda r: r['date'])
         last = max(last, d)
+
+    add_benchmark(history)
 
     # daily returns follow from consecutive levels (fixes the day after a gap)
     daily = history['daily']
@@ -628,7 +763,14 @@ def publish_snapshot(history, weights_data, today, stamp, index_value, daily_ret
         'last_rebalance_date': weights_data['rebal_date'],
         'updated_at': datetime.now().isoformat(),
     }
+    bench = next((r for r in reversed(history['daily']) if 'sp500_rebased' in r), None)
+    if bench:
+        latest['benchmark'] = {
+            'name': BENCHMARK_NAME, 'ticker': BENCHMARK_TICKER, 'as_of_date': bench['date'],
+            'close': bench['sp500'], 'rebased_value': round(bench['sp500_rebased'], 2),
+            'since_inception_return_pct': round((bench['sp500_rebased'] / BASE_VALUE - 1) * 100, 2)}
     save_json(LATEST_FILE, latest)
+    write_constituents(history, weights_data, stamp)
 
     print("\n" + "=" * 52)
     print(f"VESGLIDX: {index_value:,.2f}  ({daily_return*100:+.3f}% today)")
