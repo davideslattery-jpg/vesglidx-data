@@ -15,6 +15,14 @@
       "long_leg": 1.006403,
       "short_leg": 1.005602,
       "rebalanced": false
+    },
+    {
+      "date": "2026-10-12",
+      "index_value": 1000.8788,
+      "daily_return_pct": -0.061,
+      "long_leg": 1.006246,
+      "short_leg": 1.006121,
+      "rebalanced": false
     }
   ],
   "metadata": {
