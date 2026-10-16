@@ -40,7 +40,7 @@ import os
 import time
 import base64
 import requests
-from datetime import datetime, date
+from datetime import datetime, date, timezone
 import warnings
 warnings.filterwarnings('ignore')
 
@@ -506,6 +506,94 @@ def write_constituents(history, weights_data, stamp):
                                   'count': len(rows), 'constituents': rows})
 
 
+# ── FINAL CLOSES ONLY (Oct 16, 2026) ──────────────────────────────────────
+# GitHub can start the 12:30 UTC "morning" run five or more hours late, i.e.
+# while the market is open. Yahoo then returns a part-day bar for today, and
+# the tracker recorded it as that day's close (Oct 2, 6, 7, 8, 9, 13, 14, 15).
+# A day is now recorded only after it is final: any earlier date, or today
+# from 22:00 UTC (an hour after the latest possible close, EST or EDT).
+FINAL_HOUR_UTC = 22
+
+
+def bar_is_final(d):
+    now = datetime.now(timezone.utc)
+    today = now.strftime('%Y-%m-%d')
+    return d < today or (d == today and now.hour >= FINAL_HOUR_UTC)
+
+
+# One-time repair of the days recorded from part-day prices. Each is revalued
+# with that day's official close (split-adjusted, not dividend-adjusted, so
+# matching what a same-evening run would have recorded) using the same shares,
+# which have been unchanged since the Oct 1 rebalance.
+INTRADAY_REPAIR_ID    = 'intraday-2026-10'
+INTRADAY_REPAIR_DATES = ['2026-10-02', '2026-10-06', '2026-10-07', '2026-10-08',
+                         '2026-10-09', '2026-10-13', '2026-10-14', '2026-10-15']
+
+
+def _raw_closes(tickers):
+    """{ticker: {date: close}}, closes not adjusted for dividends."""
+    out = {}
+    for i in range(0, len(tickers), 100):
+        chunk = tickers[i:i + 100]
+        try:
+            df = yf.download(chunk, period='1mo', interval='1d', auto_adjust=False,
+                             progress=False, threads=False)
+        except Exception as e:
+            print(f"  repair download failed: {e}")
+            return {}
+        if df is None or df.empty:
+            return {}
+        close = df['Close'] if isinstance(df.columns, pd.MultiIndex) else df[['Close']]
+        if not isinstance(df.columns, pd.MultiIndex):
+            close.columns = chunk[:1]
+        for t in close.columns:
+            out[t] = {pd.Timestamp(d).strftime('%Y-%m-%d'): float(v)
+                      for d, v in close[t].dropna().items()}
+    return out
+
+
+def repair_intraday_records(history, weights_data):
+    """Returns True if any record was changed."""
+    meta = history.setdefault('metadata', {})
+    if INTRADAY_REPAIR_ID in meta.get('repairs', {}):
+        return False
+    rebal = weights_data.get('rebal_date', INCEPTION_DATE)
+    recs = [r for r in history['daily'] if r['date'] in INTRADAY_REPAIR_DATES]
+    if not recs:
+        return False
+    if any(r['date'] <= rebal or r.get('rebalanced') for r in recs):
+        print("  repair skipped: a repair date is on or before the last rebalance")
+        return False
+    shares = weights_data['shares']
+    closes = _raw_closes(sorted(shares) + [BENCHMARK_TICKER])
+    log = {}
+    for r in sorted(recs, key=lambda r: r['date']):
+        d = r['date']
+        n = sum(1 for t in shares if d in closes.get(t, {}))
+        if n < len(shares):
+            print(f"  repair: only {n}/{len(shares)} closes for {d}; will retry next run")
+            return False
+        prices = {t: closes[t][d] for t in shares}
+        value = sum(shares[t] * prices[t] for t in shares)
+        log[d] = {'recorded': r['index_value'], 'corrected': round(value, 4)}
+        r['prices'] = {**r.get('prices', {}), **prices}
+        r['index_value'] = round(value, 4)
+        r.pop('sp500', None)
+        r.pop('sp500_rebased', None)
+        bc = closes.get(BENCHMARK_TICKER, {}).get(d)
+        if bc is not None and 'benchmark_base_close' in meta:
+            r['sp500'] = round(bc, 2)
+            r['sp500_rebased'] = round(BASE_VALUE * bc / meta['benchmark_base_close'], 4)
+    meta.setdefault('repairs', {})[INTRADAY_REPAIR_ID] = {
+        'applied_at': datetime.now(timezone.utc).strftime('%Y-%m-%d %H:%M UTC'),
+        'reason': 'levels recorded from part-day prices while the market was open; '
+                  'revalued at official closes with unchanged shares',
+        'days': log}
+    for d, v in log.items():
+        print(f"  REPAIRED {d}: {v['recorded']:,.4f} -> {v['corrected']:,.4f}")
+    return True
+
+
 # ── CATCH-UP (Oct 2026) ───────────────────────────────────────────────────
 # Yahoo's newest daily bar is sometimes incomplete for a few hours after the
 # close. The tracker used to take "the newest row", so a late run could record
@@ -575,6 +663,7 @@ def catch_up(history, weights_data, today):
     today_str = today.strftime('%Y-%m-%d')
     have = {r['date'] for r in history['daily']}
     apply_splits(history, weights_data, panel)
+    repaired = repair_intraday_records(history, weights_data)
     rebal = weights_data.get('rebal_date', INCEPTION_DATE)
     last = history['daily'][-1]['date']
     print(f"Price data covers {panel.index[0]} .. {panel.index[-1]}; "
@@ -584,6 +673,9 @@ def catch_up(history, weights_data, today):
     for d in panel.index:
         if d <= rebal or d in have or d > today_str:
             continue
+        if not bar_is_final(d):
+            print(f"  {d}: market not closed yet — skipped, a later run will record it")
+            continue
         row = panel.loc[d]
         n = sum(1 for t in universe if t in row.index and pd.notna(row[t]))
         if n >= MIN_COVERAGE * len(universe):
@@ -591,7 +683,7 @@ def catch_up(history, weights_data, today):
         else:
             print(f"  {d}: only {n}/{len(universe)} closes available yet — "
                   "skipped, the next run will pick it up")
-    if not todo:
+    if not todo and not repaired:
         print("No new complete trading days to record.")
         return False
 

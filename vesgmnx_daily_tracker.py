@@ -73,9 +73,9 @@ def utcnow():
 
 def bar_is_final(d):
     """A day's close is trusted once the US market has been shut for an hour
-    (21:00 UTC), so a run during the session never records a part-day price."""
+    (22:00 UTC), so a run during the session never records a part-day price."""
     now = utcnow()
-    return d < now.strftime('%Y-%m-%d') or (d == now.strftime('%Y-%m-%d') and now.hour >= 21)
+    return d < now.strftime('%Y-%m-%d') or (d == now.strftime('%Y-%m-%d') and now.hour >= 22)
 
 
 # ── PRICES ────────────────────────────────────────────────────────────────

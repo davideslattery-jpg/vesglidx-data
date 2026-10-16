@@ -12,6 +12,9 @@ on:
     # newest daily bar can still be incomplete; the tracker skips an incomplete
     # day and this run records it. Runs that find nothing new write nothing.
     - cron: '30 12 * * 2-6'
+    # Late-evening run, 01:30 UTC Tue–Sat (6:30pm Phoenix). Records the day's
+    # close when the 22:00 run was too early for Yahoo to have every close.
+    - cron: '30 1 * * 2-6'
   workflow_dispatch:   # also lets you run it on demand from the Actions tab
 
 permissions:
