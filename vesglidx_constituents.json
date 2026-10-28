@@ -1,6 +1,6 @@
 {
   "index": "VESGLIDX",
-  "as_of_date": "2026-10-26",
+  "as_of_date": "2026-10-27",
   "last_rebalance_date": "2026-10-01",
   "count": 95,
   "constituents": [
@@ -10,7 +10,7 @@
       "sector": "Communication Services",
       "verde_esg_score": 88.29,
       "target_weight_pct": 10.0,
-      "current_weight_pct": 8.5403
+      "current_weight_pct": 8.3858
     },
     {
       "ticker": "V",
@@ -18,7 +18,7 @@
       "sector": "Financials",
       "verde_esg_score": 99.44,
       "target_weight_pct": 7.2848,
-      "current_weight_pct": 8.0444
+      "current_weight_pct": 7.9852
     },
     {
       "ticker": "NVDA",
@@ -26,7 +26,7 @@
       "sector": "Information Technology",
       "verde_esg_score": 87.2,
       "target_weight_pct": 7.4061,
-      "current_weight_pct": 6.8129
+      "current_weight_pct": 6.8626
     },
     {
       "ticker": "MA",
@@ -34,7 +34,7 @@
       "sector": "Financials",
       "verde_esg_score": 89.63,
       "target_weight_pct": 4.7207,
-      "current_weight_pct": 5.1772
+      "current_weight_pct": 5.1378
     },
     {
       "ticker": "ABBV",
@@ -42,7 +42,7 @@
       "sector": "Health Care",
       "verde_esg_score": 89.15,
       "target_weight_pct": 4.4997,
-      "current_weight_pct": 4.8804
+      "current_weight_pct": 4.8663
     },
     {
       "ticker": "PM",
@@ -50,7 +50,7 @@
       "sector": "Consumer Staples",
       "verde_esg_score": 96.76,
       "target_weight_pct": 3.1546,
-      "current_weight_pct": 3.3272
+      "current_weight_pct": 3.334
     },
     {
       "ticker": "HD",
@@ -58,7 +58,7 @@
       "sector": "Consumer Discretionary",
       "verde_esg_score": 93.57,
       "target_weight_pct": 2.8903,
-      "current_weight_pct": 3.2132
+      "current_weight_pct": 3.199
     },
     {
       "ticker": "NFLX",
@@ -66,7 +66,7 @@
       "sector": "Communication Services",
       "verde_esg_score": 93.57,
       "target_weight_pct": 2.9615,
-      "current_weight_pct": 2.7422
+      "current_weight_pct": 2.6785
     },
     {
       "ticker": "TMO",
@@ -74,7 +74,7 @@
       "sector": "Health Care",
       "verde_esg_score": 87.01,
       "target_weight_pct": 2.3755,
-      "current_weight_pct": 2.4514
+      "current_weight_pct": 2.4764
     },
     {
       "ticker": "PANW",
@@ -82,15 +82,7 @@
       "sector": "Information Technology",
       "verde_esg_score": 97.79,
       "target_weight_pct": 2.3107,
-      "current_weight_pct": 2.2387
-    },
-    {
-      "ticker": "AXP",
-      "name": "American Express",
-      "sector": "Financials",
-      "verde_esg_score": 91.83,
-      "target_weight_pct": 2.0474,
-      "current_weight_pct": 2.0994
+      "current_weight_pct": 2.2993
     },
     {
       "ticker": "DELL",
@@ -98,15 +90,15 @@
       "sector": "Information Technology",
       "verde_esg_score": 97.38,
       "target_weight_pct": 2.4303,
-      "current_weight_pct": 2.0602
+      "current_weight_pct": 2.2103
     },
     {
-      "ticker": "MCD",
-      "name": "McDonald's",
-      "sector": "Consumer Discretionary",
-      "verde_esg_score": 92.7,
-      "target_weight_pct": 1.6558,
-      "current_weight_pct": 1.7614
+      "ticker": "AXP",
+      "name": "American Express",
+      "sector": "Financials",
+      "verde_esg_score": 91.83,
+      "target_weight_pct": 2.0474,
+      "current_weight_pct": 2.0816
     },
     {
       "ticker": "VZ",
@@ -114,15 +106,15 @@
       "sector": "Communication Services",
       "verde_esg_score": 91.4,
       "target_weight_pct": 1.9032,
-      "current_weight_pct": 1.754
+      "current_weight_pct": 1.7848
     },
     {
-      "ticker": "DHR",
-      "name": "Danaher Corporation",
-      "sector": "Health Care",
-      "verde_esg_score": 94.04,
-      "target_weight_pct": 1.6014,
-      "current_weight_pct": 1.7322
+      "ticker": "MCD",
+      "name": "McDonald's",
+      "sector": "Consumer Discretionary",
+      "verde_esg_score": 92.7,
+      "target_weight_pct": 1.6558,
+      "current_weight_pct": 1.7489
     },
     {
       "ticker": "UNP",
@@ -130,7 +122,15 @@
       "sector": "Industrials",
       "verde_esg_score": 90.9,
       "target_weight_pct": 1.6095,
-      "current_weight_pct": 1.725
+      "current_weight_pct": 1.739
+    },
+    {
+      "ticker": "DHR",
+      "name": "Danaher Corporation",
+      "sector": "Health Care",
+      "verde_esg_score": 94.04,
+      "target_weight_pct": 1.6014,
+      "current_weight_pct": 1.7221
     },
     {
       "ticker": "T",
@@ -138,15 +138,7 @@
       "sector": "Communication Services",
       "verde_esg_score": 91.4,
       "target_weight_pct": 1.6722,
-      "current_weight_pct": 1.4107
-    },
-    {
-      "ticker": "SPGI",
-      "name": "S&P Global",
-      "sector": "Financials",
-      "verde_esg_score": 96.06,
-      "target_weight_pct": 1.2153,
-      "current_weight_pct": 1.3872
+      "current_weight_pct": 1.4144
     },
     {
       "ticker": "ETN",
@@ -154,7 +146,15 @@
       "sector": "Industrials",
       "verde_esg_score": 88.52,
       "target_weight_pct": 1.6064,
-      "current_weight_pct": 1.3433
+      "current_weight_pct": 1.3853
+    },
+    {
+      "ticker": "SPGI",
+      "name": "S&P Global",
+      "sector": "Financials",
+      "verde_esg_score": 96.06,
+      "target_weight_pct": 1.2153,
+      "current_weight_pct": 1.3796
     },
     {
       "ticker": "QCOM",
@@ -162,7 +162,7 @@
       "sector": "Information Technology",
       "verde_esg_score": 94.65,
       "target_weight_pct": 1.341,
-      "current_weight_pct": 1.3005
+      "current_weight_pct": 1.3313
     },
     {
       "ticker": "PLD",
@@ -170,7 +170,7 @@
       "sector": "Real Estate",
       "verde_esg_score": 95.71,
       "target_weight_pct": 1.3177,
-      "current_weight_pct": 1.2767
+      "current_weight_pct": 1.2762
     },
     {
       "ticker": "BKNG",
@@ -178,7 +178,7 @@
       "sector": "Consumer Discretionary",
       "verde_esg_score": 96.96,
       "target_weight_pct": 1.3254,
-      "current_weight_pct": 1.245
+      "current_weight_pct": 1.2186
     },
     {
       "ticker": "BMY",
@@ -186,7 +186,7 @@
       "sector": "Health Care",
       "verde_esg_score": 86.36,
       "target_weight_pct": 1.2034,
-      "current_weight_pct": 1.186
+      "current_weight_pct": 1.1829
     },
     {
       "ticker": "MO",
@@ -194,7 +194,7 @@
       "sector": "Consumer Staples",
       "verde_esg_score": 87.03,
       "target_weight_pct": 1.0705,
-      "current_weight_pct": 1.1574
+      "current_weight_pct": 1.1534
     },
     {
       "ticker": "MDT",
@@ -202,7 +202,7 @@
       "sector": "Health Care",
       "verde_esg_score": 87.08,
       "target_weight_pct": 1.0498,
-      "current_weight_pct": 1.1319
+      "current_weight_pct": 1.12
     },
     {
       "ticker": "NEM",
@@ -210,7 +210,7 @@
       "sector": "Materials",
       "verde_esg_score": 82.06,
       "target_weight_pct": 1.0887,
-      "current_weight_pct": 1.0305
+      "current_weight_pct": 1.0497
     },
     {
       "ticker": "NOW",
@@ -218,7 +218,7 @@
       "sector": "Information Technology",
       "verde_esg_score": 91.36,
       "target_weight_pct": 0.9111,
-      "current_weight_pct": 1.0285
+      "current_weight_pct": 1.0047
     },
     {
       "ticker": "PH",
@@ -226,7 +226,7 @@
       "sector": "Industrials",
       "verde_esg_score": 82.66,
       "target_weight_pct": 1.0915,
-      "current_weight_pct": 1.0048
+      "current_weight_pct": 0.9991
     },
     {
       "ticker": "TT",
@@ -234,7 +234,7 @@
       "sector": "Industrials",
       "verde_esg_score": 90.43,
       "target_weight_pct": 0.9844,
-      "current_weight_pct": 0.9596
+      "current_weight_pct": 0.9707
     },
     {
       "ticker": "MRSH",
@@ -242,15 +242,7 @@
       "sector": "Financials",
       "verde_esg_score": 96.06,
       "target_weight_pct": 0.8496,
-      "current_weight_pct": 0.9465
-    },
-    {
-      "ticker": "MCO",
-      "name": "Moody's Corporation",
-      "sector": "Financials",
-      "verde_esg_score": 99.44,
-      "target_weight_pct": 0.8523,
-      "current_weight_pct": 0.9074
+      "current_weight_pct": 0.9252
     },
     {
       "ticker": "CSX",
@@ -258,7 +250,15 @@
       "sector": "Industrials",
       "verde_esg_score": 86.61,
       "target_weight_pct": 0.8167,
-      "current_weight_pct": 0.8853
+      "current_weight_pct": 0.9004
+    },
+    {
+      "ticker": "MCO",
+      "name": "Moody's Corporation",
+      "sector": "Financials",
+      "verde_esg_score": 99.44,
+      "target_weight_pct": 0.8523,
+      "current_weight_pct": 0.8864
     },
     {
       "ticker": "FTNT",
@@ -266,23 +266,7 @@
       "sector": "Information Technology",
       "verde_esg_score": 91.36,
       "target_weight_pct": 0.8693,
-      "current_weight_pct": 0.8767
-    },
-    {
-      "ticker": "ACN",
-      "name": "Accenture",
-      "sector": "Information Technology",
-      "verde_esg_score": 93.63,
-      "target_weight_pct": 0.7482,
-      "current_weight_pct": 0.8567
-    },
-    {
-      "ticker": "EMR",
-      "name": "Emerson Electric",
-      "sector": "Industrials",
-      "verde_esg_score": 85.17,
-      "target_weight_pct": 0.8073,
-      "current_weight_pct": 0.8094
+      "current_weight_pct": 0.8832
     },
     {
       "ticker": "WDC",
@@ -290,7 +274,23 @@
       "sector": "Information Technology",
       "verde_esg_score": 89.26,
       "target_weight_pct": 1.069,
-      "current_weight_pct": 0.8092
+      "current_weight_pct": 0.864
+    },
+    {
+      "ticker": "EMR",
+      "name": "Emerson Electric",
+      "sector": "Industrials",
+      "verde_esg_score": 85.17,
+      "target_weight_pct": 0.8073,
+      "current_weight_pct": 0.8309
+    },
+    {
+      "ticker": "ACN",
+      "name": "Accenture",
+      "sector": "Information Technology",
+      "verde_esg_score": 93.63,
+      "target_weight_pct": 0.7482,
+      "current_weight_pct": 0.8135
     },
     {
       "ticker": "ECL",
@@ -298,15 +298,7 @@
       "sector": "Materials",
       "verde_esg_score": 90.69,
       "target_weight_pct": 0.7618,
-      "current_weight_pct": 0.7977
-    },
-    {
-      "ticker": "CMCSA",
-      "name": "Comcast",
-      "sector": "Communication Services",
-      "verde_esg_score": 91.4,
-      "target_weight_pct": 0.7691,
-      "current_weight_pct": 0.7684
+      "current_weight_pct": 0.803
     },
     {
       "ticker": "MRNA",
@@ -314,7 +306,15 @@
       "sector": "Health Care",
       "verde_esg_score": 87.98,
       "target_weight_pct": 0.7267,
-      "current_weight_pct": 0.752
+      "current_weight_pct": 0.7852
+    },
+    {
+      "ticker": "CMCSA",
+      "name": "Comcast",
+      "sector": "Communication Services",
+      "verde_esg_score": 91.4,
+      "target_weight_pct": 0.7691,
+      "current_weight_pct": 0.7598
     },
     {
       "ticker": "NSC",
@@ -322,7 +322,7 @@
       "sector": "Industrials",
       "verde_esg_score": 86.61,
       "target_weight_pct": 0.6601,
-      "current_weight_pct": 0.6987
+      "current_weight_pct": 0.7095
     },
     {
       "ticker": "FDX",
@@ -330,7 +330,7 @@
       "sector": "Industrials",
       "verde_esg_score": 90.9,
       "target_weight_pct": 0.6646,
-      "current_weight_pct": 0.6841
+      "current_weight_pct": 0.6978
     },
     {
       "ticker": "ADBE",
@@ -338,7 +338,7 @@
       "sector": "Information Technology",
       "verde_esg_score": 93.63,
       "target_weight_pct": 0.6409,
-      "current_weight_pct": 0.6754
+      "current_weight_pct": 0.6476
     },
     {
       "ticker": "NDAQ",
@@ -346,15 +346,7 @@
       "sector": "Financials",
       "verde_esg_score": 96.06,
       "target_weight_pct": 0.5393,
-      "current_weight_pct": 0.6057
-    },
-    {
-      "ticker": "INTU",
-      "name": "Intuit",
-      "sector": "Information Technology",
-      "verde_esg_score": 93.63,
-      "target_weight_pct": 0.4927,
-      "current_weight_pct": 0.5823
+      "current_weight_pct": 0.6026
     },
     {
       "ticker": "CDNS",
@@ -362,7 +354,15 @@
       "sector": "Information Technology",
       "verde_esg_score": 90.26,
       "target_weight_pct": 0.5925,
-      "current_weight_pct": 0.5351
+      "current_weight_pct": 0.5689
+    },
+    {
+      "ticker": "INTU",
+      "name": "Intuit",
+      "sector": "Information Technology",
+      "verde_esg_score": 93.63,
+      "target_weight_pct": 0.4927,
+      "current_weight_pct": 0.5617
     },
     {
       "ticker": "AON",
@@ -370,15 +370,7 @@
       "sector": "Financials",
       "verde_esg_score": 78.33,
       "target_weight_pct": 0.4969,
-      "current_weight_pct": 0.5348
-    },
-    {
-      "ticker": "EBAY",
-      "name": "eBay Inc.",
-      "sector": "Consumer Discretionary",
-      "verde_esg_score": 87.35,
-      "target_weight_pct": 0.4506,
-      "current_weight_pct": 0.4963
+      "current_weight_pct": 0.5347
     },
     {
       "ticker": "ROK",
@@ -386,7 +378,15 @@
       "sector": "Industrials",
       "verde_esg_score": 97.18,
       "target_weight_pct": 0.5112,
-      "current_weight_pct": 0.4884
+      "current_weight_pct": 0.4981
+    },
+    {
+      "ticker": "EBAY",
+      "name": "eBay Inc.",
+      "sector": "Consumer Discretionary",
+      "verde_esg_score": 87.35,
+      "target_weight_pct": 0.4506,
+      "current_weight_pct": 0.4922
     },
     {
       "ticker": "IQV",
@@ -394,7 +394,7 @@
       "sector": "Health Care",
       "verde_esg_score": 98.21,
       "target_weight_pct": 0.4731,
-      "current_weight_pct": 0.4881
+      "current_weight_pct": 0.4837
     },
     {
       "ticker": "VEEV",
@@ -402,7 +402,7 @@
       "sector": "Health Care",
       "verde_esg_score": 87.61,
       "target_weight_pct": 0.4387,
-      "current_weight_pct": 0.4868
+      "current_weight_pct": 0.4788
     },
     {
       "ticker": "PYPL",
@@ -410,23 +410,7 @@
       "sector": "Financials",
       "verde_esg_score": 93.01,
       "target_weight_pct": 0.4576,
-      "current_weight_pct": 0.4663
-    },
-    {
-      "ticker": "WAT",
-      "name": "Waters Corporation",
-      "sector": "Health Care",
-      "verde_esg_score": 91.81,
-      "target_weight_pct": 0.433,
-      "current_weight_pct": 0.4562
-    },
-    {
-      "ticker": "MET",
-      "name": "MetLife",
-      "sector": "Financials",
-      "verde_esg_score": 66.06,
-      "target_weight_pct": 0.431,
-      "current_weight_pct": 0.4493
+      "current_weight_pct": 0.4748
     },
     {
       "ticker": "LITE",
@@ -434,7 +418,23 @@
       "sector": "Information Technology",
       "verde_esg_score": 93.63,
       "target_weight_pct": 0.5823,
-      "current_weight_pct": 0.4479
+      "current_weight_pct": 0.4734
+    },
+    {
+      "ticker": "WAT",
+      "name": "Waters Corporation",
+      "sector": "Health Care",
+      "verde_esg_score": 91.81,
+      "target_weight_pct": 0.433,
+      "current_weight_pct": 0.468
+    },
+    {
+      "ticker": "MET",
+      "name": "MetLife",
+      "sector": "Financials",
+      "verde_esg_score": 66.06,
+      "target_weight_pct": 0.431,
+      "current_weight_pct": 0.4483
     },
     {
       "ticker": "CARR",
@@ -442,15 +442,7 @@
       "sector": "Industrials",
       "verde_esg_score": 86.4,
       "target_weight_pct": 0.427,
-      "current_weight_pct": 0.4291
-    },
-    {
-      "ticker": "MSCI",
-      "name": "MSCI",
-      "sector": "Financials",
-      "verde_esg_score": 89.29,
-      "target_weight_pct": 0.3804,
-      "current_weight_pct": 0.4236
+      "current_weight_pct": 0.4389
     },
     {
       "ticker": "ILMN",
@@ -458,7 +450,15 @@
       "sector": "Health Care",
       "verde_esg_score": 91.56,
       "target_weight_pct": 0.4164,
-      "current_weight_pct": 0.4176
+      "current_weight_pct": 0.4299
+    },
+    {
+      "ticker": "MSCI",
+      "name": "MSCI",
+      "sector": "Financials",
+      "verde_esg_score": 89.29,
+      "target_weight_pct": 0.3804,
+      "current_weight_pct": 0.412
     },
     {
       "ticker": "XYZ",
@@ -466,7 +466,7 @@
       "sector": "Financials",
       "verde_esg_score": 82.86,
       "target_weight_pct": 0.397,
-      "current_weight_pct": 0.393
+      "current_weight_pct": 0.3941
     },
     {
       "ticker": "EL",
@@ -474,7 +474,7 @@
       "sector": "Consumer Staples",
       "verde_esg_score": 89.74,
       "target_weight_pct": 0.3297,
-      "current_weight_pct": 0.3911
+      "current_weight_pct": 0.3888
     },
     {
       "ticker": "CMG",
@@ -482,7 +482,7 @@
       "sector": "Consumer Discretionary",
       "verde_esg_score": 90.53,
       "target_weight_pct": 0.3952,
-      "current_weight_pct": 0.3416
+      "current_weight_pct": 0.3358
     },
     {
       "ticker": "GEHC",
@@ -490,7 +490,7 @@
       "sector": "Health Care",
       "verde_esg_score": 94.26,
       "target_weight_pct": 0.3061,
-      "current_weight_pct": 0.3386
+      "current_weight_pct": 0.334
     },
     {
       "ticker": "CBRE",
@@ -498,15 +498,7 @@
       "sector": "Real Estate",
       "verde_esg_score": 89.68,
       "target_weight_pct": 0.3633,
-      "current_weight_pct": 0.3363
-    },
-    {
-      "ticker": "HSY",
-      "name": "Hershey Company (The)",
-      "sector": "Consumer Staples",
-      "verde_esg_score": 83.07,
-      "target_weight_pct": 0.2878,
-      "current_weight_pct": 0.2988
+      "current_weight_pct": 0.3324
     },
     {
       "ticker": "UAL",
@@ -514,15 +506,15 @@
       "sector": "Industrials",
       "verde_esg_score": 81.8,
       "target_weight_pct": 0.3184,
-      "current_weight_pct": 0.282
+      "current_weight_pct": 0.2928
     },
     {
-      "ticker": "OTIS",
-      "name": "Otis Worldwide",
-      "sector": "Industrials",
-      "verde_esg_score": 90.9,
-      "target_weight_pct": 0.2433,
-      "current_weight_pct": 0.2792
+      "ticker": "HSY",
+      "name": "Hershey Company (The)",
+      "sector": "Consumer Staples",
+      "verde_esg_score": 83.07,
+      "target_weight_pct": 0.2878,
+      "current_weight_pct": 0.2917
     },
     {
       "ticker": "CIEN",
@@ -530,7 +522,7 @@
       "sector": "Information Technology",
       "verde_esg_score": 91.36,
       "target_weight_pct": 0.32,
-      "current_weight_pct": 0.2788
+      "current_weight_pct": 0.2909
     },
     {
       "ticker": "IR",
@@ -538,7 +530,15 @@
       "sector": "Industrials",
       "verde_esg_score": 89.29,
       "target_weight_pct": 0.2854,
-      "current_weight_pct": 0.2779
+      "current_weight_pct": 0.2812
+    },
+    {
+      "ticker": "OTIS",
+      "name": "Otis Worldwide",
+      "sector": "Industrials",
+      "verde_esg_score": 90.9,
+      "target_weight_pct": 0.2433,
+      "current_weight_pct": 0.2748
     },
     {
       "ticker": "KHC",
@@ -546,7 +546,7 @@
       "sector": "Consumer Staples",
       "verde_esg_score": 85.05,
       "target_weight_pct": 0.2519,
-      "current_weight_pct": 0.2727
+      "current_weight_pct": 0.2649
     },
     {
       "ticker": "LH",
@@ -554,7 +554,7 @@
       "sector": "Health Care",
       "verde_esg_score": 88.97,
       "target_weight_pct": 0.2421,
-      "current_weight_pct": 0.2578
+      "current_weight_pct": 0.2584
     },
     {
       "ticker": "VRSK",
@@ -562,15 +562,7 @@
       "sector": "Industrials",
       "verde_esg_score": 92.51,
       "target_weight_pct": 0.2186,
-      "current_weight_pct": 0.2504
-    },
-    {
-      "ticker": "XYL",
-      "name": "Xylem Inc.",
-      "sector": "Industrials",
-      "verde_esg_score": 89.42,
-      "target_weight_pct": 0.2296,
-      "current_weight_pct": 0.2422
+      "current_weight_pct": 0.2392
     },
     {
       "ticker": "LVS",
@@ -578,7 +570,7 @@
       "sector": "Consumer Discretionary",
       "verde_esg_score": 90.53,
       "target_weight_pct": 0.2423,
-      "current_weight_pct": 0.2375
+      "current_weight_pct": 0.2342
     },
     {
       "ticker": "CHD",
@@ -586,7 +578,7 @@
       "sector": "Consumer Staples",
       "verde_esg_score": 84.38,
       "target_weight_pct": 0.2057,
-      "current_weight_pct": 0.2265
+      "current_weight_pct": 0.2253
     },
     {
       "ticker": "NTRS",
@@ -594,7 +586,15 @@
       "sector": "Financials",
       "verde_esg_score": 66.06,
       "target_weight_pct": 0.2226,
-      "current_weight_pct": 0.2193
+      "current_weight_pct": 0.22
+    },
+    {
+      "ticker": "XYL",
+      "name": "Xylem Inc.",
+      "sector": "Industrials",
+      "verde_esg_score": 89.42,
+      "target_weight_pct": 0.2296,
+      "current_weight_pct": 0.2074
     },
     {
       "ticker": "TPR",
@@ -602,7 +602,7 @@
       "sector": "Consumer Discretionary",
       "verde_esg_score": 89.46,
       "target_weight_pct": 0.2232,
-      "current_weight_pct": 0.2041
+      "current_weight_pct": 0.2047
     },
     {
       "ticker": "PPL",
@@ -610,15 +610,7 @@
       "sector": "Utilities",
       "verde_esg_score": 71.58,
       "target_weight_pct": 0.1923,
-      "current_weight_pct": 0.2015
-    },
-    {
-      "ticker": "SBAC",
-      "name": "SBA Communications",
-      "sector": "Real Estate",
-      "verde_esg_score": 91.32,
-      "target_weight_pct": 0.1709,
-      "current_weight_pct": 0.1977
+      "current_weight_pct": 0.2027
     },
     {
       "ticker": "PPG",
@@ -626,7 +618,15 @@
       "sector": "Materials",
       "verde_esg_score": 75.27,
       "target_weight_pct": 0.1904,
-      "current_weight_pct": 0.1965
+      "current_weight_pct": 0.2025
+    },
+    {
+      "ticker": "SBAC",
+      "name": "SBA Communications",
+      "sector": "Real Estate",
+      "verde_esg_score": 91.32,
+      "target_weight_pct": 0.1709,
+      "current_weight_pct": 0.1956
     },
     {
       "ticker": "AMCR",
@@ -634,15 +634,7 @@
       "sector": "Materials",
       "verde_esg_score": 84.75,
       "target_weight_pct": 0.1792,
-      "current_weight_pct": 0.1947
-    },
-    {
-      "ticker": "HPQ",
-      "name": "HP Inc.",
-      "sector": "Information Technology",
-      "verde_esg_score": 90.15,
-      "target_weight_pct": 0.1836,
-      "current_weight_pct": 0.1914
+      "current_weight_pct": 0.1933
     },
     {
       "ticker": "BBY",
@@ -650,15 +642,15 @@
       "sector": "Consumer Discretionary",
       "verde_esg_score": 86.27,
       "target_weight_pct": 0.1723,
-      "current_weight_pct": 0.1892
+      "current_weight_pct": 0.1899
     },
     {
-      "ticker": "EFX",
-      "name": "Equifax",
-      "sector": "Industrials",
-      "verde_esg_score": 82.81,
-      "target_weight_pct": 0.1448,
-      "current_weight_pct": 0.182
+      "ticker": "HPQ",
+      "name": "HP Inc.",
+      "sector": "Information Technology",
+      "verde_esg_score": 90.15,
+      "target_weight_pct": 0.1836,
+      "current_weight_pct": 0.1882
     },
     {
       "ticker": "ESS",
@@ -666,7 +658,15 @@
       "sector": "Real Estate",
       "verde_esg_score": 89.29,
       "target_weight_pct": 0.1809,
-      "current_weight_pct": 0.1817
+      "current_weight_pct": 0.1811
+    },
+    {
+      "ticker": "EFX",
+      "name": "Equifax",
+      "sector": "Industrials",
+      "verde_esg_score": 82.81,
+      "target_weight_pct": 0.1448,
+      "current_weight_pct": 0.1787
     },
     {
       "ticker": "BR",
@@ -674,7 +674,7 @@
       "sector": "Industrials",
       "verde_esg_score": 81.45,
       "target_weight_pct": 0.1607,
-      "current_weight_pct": 0.1775
+      "current_weight_pct": 0.1733
     },
     {
       "ticker": "HAS",
@@ -682,7 +682,7 @@
       "sector": "Consumer Discretionary",
       "verde_esg_score": 93.53,
       "target_weight_pct": 0.1265,
-      "current_weight_pct": 0.1631
+      "current_weight_pct": 0.1633
     },
     {
       "ticker": "BALL",
@@ -690,7 +690,7 @@
       "sector": "Materials",
       "verde_esg_score": 86.56,
       "target_weight_pct": 0.141,
-      "current_weight_pct": 0.1581
+      "current_weight_pct": 0.157
     },
     {
       "ticker": "NRG",
@@ -698,7 +698,7 @@
       "sector": "Utilities",
       "verde_esg_score": 74.54,
       "target_weight_pct": 0.1619,
-      "current_weight_pct": 0.1537
+      "current_weight_pct": 0.1561
     },
     {
       "ticker": "PTC",
@@ -714,7 +714,7 @@
       "sector": "Materials",
       "verde_esg_score": 85.02,
       "target_weight_pct": 0.1202,
-      "current_weight_pct": 0.1263
+      "current_weight_pct": 0.1249
     },
     {
       "ticker": "CSGP",
@@ -722,7 +722,7 @@
       "sector": "Real Estate",
       "verde_esg_score": 87.61,
       "target_weight_pct": 0.1043,
-      "current_weight_pct": 0.1247
+      "current_weight_pct": 0.1182
     },
     {
       "ticker": "BXP",
@@ -730,7 +730,7 @@
       "sector": "Real Estate",
       "verde_esg_score": 89.29,
       "target_weight_pct": 0.1074,
-      "current_weight_pct": 0.1092
+      "current_weight_pct": 0.1066
     },
     {
       "ticker": "TECH",
@@ -738,7 +738,7 @@
       "sector": "Health Care",
       "verde_esg_score": 87.61,
       "target_weight_pct": 0.108,
-      "current_weight_pct": 0.1066
+      "current_weight_pct": 0.1063
     },
     {
       "ticker": "DECK",
@@ -746,7 +746,7 @@
       "sector": "Consumer Discretionary",
       "verde_esg_score": 90.53,
       "target_weight_pct": 0.1045,
-      "current_weight_pct": 0.1037
+      "current_weight_pct": 0.1038
     },
     {
       "ticker": "CLX",
@@ -754,7 +754,7 @@
       "sector": "Consumer Staples",
       "verde_esg_score": 83.32,
       "target_weight_pct": 0.0893,
-      "current_weight_pct": 0.0944
+      "current_weight_pct": 0.0949
     },
     {
       "ticker": "FRT",
@@ -762,7 +762,7 @@
       "sector": "Real Estate",
       "verde_esg_score": 87.79,
       "target_weight_pct": 0.0901,
-      "current_weight_pct": 0.0896
+      "current_weight_pct": 0.0898
     }
   ]
 }
