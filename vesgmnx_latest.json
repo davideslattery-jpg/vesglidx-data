@@ -1,11 +1,11 @@
 {
   "index_name": "Verde ESG Market Neutral Index",
   "ticker": "VESGMNX",
-  "as_of_date": "2026-11-17",
-  "index_value": 1000.12,
-  "daily_change_pct": -0.593,
-  "ytd_return_pct": 0.01,
-  "since_inception_return_pct": 0.01,
+  "as_of_date": "2026-11-18",
+  "index_value": 999.65,
+  "daily_change_pct": -0.047,
+  "ytd_return_pct": -0.04,
+  "since_inception_return_pct": -0.04,
   "base_value": 1000.0,
   "inception_date": "2026-10-08",
   "long_count": 108,
@@ -13,10 +13,10 @@
   "hedge_ratio": 0.876886,
   "beta_long": 0.7866,
   "beta_short": 0.897,
-  "long_leg_return_since_rebalance_pct": 1.27,
-  "short_leg_return_since_rebalance_pct": 1.43,
+  "long_leg_return_since_rebalance_pct": 1.11,
+  "short_leg_return_since_rebalance_pct": 1.31,
   "last_rebalance_date": "2026-10-08",
   "scores_as_of": "2026-09-30",
   "methodology": "VESGMNX-M-V1",
-  "updated_at": "2026-11-18T03:40:22.317867"
+  "updated_at": "2026-11-19T03:16:47.309684"
 }
